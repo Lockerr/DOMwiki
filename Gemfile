@@ -9,7 +9,7 @@ gem 'mysql2'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'quiet_assets'
-
+gem 'haml-rails'
 group :production do
   gem 'pg'
 end

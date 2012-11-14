@@ -1,4 +1,6 @@
 Build::Application.routes.draw do
+  resources :models
+
   resources :brands
 
   # The priority is based upon order of creation:
