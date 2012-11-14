@@ -15,6 +15,6 @@ $(window).on "mercury:saved", ->
   window.location = loc
   console.log window.location.href
   window.location = loc.replace(/\/editor\//i, '/')
-  alert loc
+  
   console.log 'saved'
       

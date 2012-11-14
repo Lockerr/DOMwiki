@@ -13,7 +13,8 @@ gem 'haml-rails'
 gem 'russian'
 gem 'mercury-rails'
 gem 'thin'
-
+gem 'less-rails'
+gem 'therubyracer'
 
 group :production do
   gem 'pg'
