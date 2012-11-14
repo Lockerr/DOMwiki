@@ -10,10 +10,7 @@
     /[if lt IE 9]
       = javascript_include_tag "http://html5shim.googlecode.com/svn/trunk/html5.js"
     = stylesheet_link_tag "application", :media => "all"
-    %link(href="images/apple-touch-icon-144x144.png" rel="apple-touch-icon-precomposed" sizes="144x144")
-    %link(href="images/apple-touch-icon-114x114.png" rel="apple-touch-icon-precomposed" sizes="114x114")
-    %link(href="images/apple-touch-icon-72x72.png" rel="apple-touch-icon-precomposed" sizes="72x72")
-    %link(href="images/apple-touch-icon.png" rel="apple-touch-icon-precomposed")
+
     %link(href="images/favicon.ico" rel="shortcut icon")
 
 
@@ -28,9 +25,11 @@
           %a.brand(href="#") Build
           .container.nav-collapse
             %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+              %li= link_to t('models'), models_path
+              %li= link_to t('brands'), brands_path
+              %li= link_to t('categories'), categories_path
+              %li= link_to t('subcategories'), subcategories_path
+              %li= link_to t('rubrics'), rubrics_path
 
     .container
 

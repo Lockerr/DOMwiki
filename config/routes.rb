@@ -1,7 +1,29 @@
 Build::Application.routes.draw do
+  
+  resources :pages do
+    member { put :mercury_update }
+  end
+  
+  resources :companies
+
+    namespace :mercury do
+      resources :images
+    end
+
+  mount Mercury::Engine => '/'
+
+  resources :subcategories
+
+  resources :categories
+
+  resources :rubrics
+
   resources :models
 
-  resources :brands
+  resources :brands do
+    resources :models
+  end
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

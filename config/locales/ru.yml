@@ -1,0 +1,18 @@
+ru:
+  activerecord:
+    attributes:
+      model:
+        name: Имя
+        brand_id: Производитель
+        description: Описание
+        price: Цена
+        created_at: Создано
+  helpers:
+    actions: Действия
+    links:
+      new: Создать
+      cancel: Отменить
+      edit: Редактировать
+      destroy: Удалить
+      back: Назад
+

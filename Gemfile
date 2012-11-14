@@ -10,6 +10,11 @@ gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'quiet_assets'
 gem 'haml-rails'
+gem 'russian'
+gem 'mercury-rails'
+gem 'thin'
+
+
 group :production do
   gem 'pg'
 end
@@ -41,3 +46,4 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+gem 'paperclip'

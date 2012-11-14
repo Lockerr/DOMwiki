@@ -44,7 +44,7 @@ class ModelsController < ApplicationController
 
     respond_to do |format|
       if @model.save
-        format.html { redirect_to @model, notice: 'Model was successfully created.' }
+        format.html { redirect_to models_path, notice: 'Model was successfully created.' }
         format.json { render json: @model, status: :created, location: @model }
       else
         format.html { render action: "new" }
