@@ -1,0 +1,10 @@
+= form_for @csi do |f|
+  - if @csi.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@csi.errors.count, "error")} prohibited this csi from being saved:"
+      %ul
+        - @csi.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

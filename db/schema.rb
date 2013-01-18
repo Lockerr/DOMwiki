@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114093621) do
+ActiveRecord::Schema.define(:version => 20130118065501) do
+
+  create_table "assessments", :force => true do |t|
+    t.integer  "category_id"
+    t.boolean  "assessment"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "brands", :force => true do |t|
     t.string   "name"
@@ -45,14 +53,43 @@ ActiveRecord::Schema.define(:version => 20121114093621) do
   create_table "categories", :force => true do |t|
     t.string   "name"
     t.integer  "rubric_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "depth"
+    t.integer  "contactor_id"
   end
 
   create_table "companies", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "csis", :force => true do |t|
+    t.string   "ceo"
+    t.string   "ceo_since"
+    t.text     "ceo_description"
+    t.string   "cto"
+    t.string   "cto_since"
+    t.text     "cto_description"
+    t.string   "sales"
+    t.string   "sale_since"
+    t.text     "sales_description"
+    t.string   "fourth"
+    t.string   "fourth_since"
+    t.string   "fourth_description"
+    t.string   "name"
+    t.date     "foundation"
+    t.string   "slogan"
+    t.text     "swat"
+    t.text     "description"
+    t.integer  "employers"
+    t.boolean  "published"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "mercury_images", :force => true do |t|
@@ -62,6 +99,13 @@ ActiveRecord::Schema.define(:version => 20121114093621) do
     t.datetime "image_updated_at"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+  end
+
+  create_table "mistakes", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "models", :force => true do |t|
@@ -103,6 +147,28 @@ ActiveRecord::Schema.define(:version => 20121114093621) do
     t.text     "body"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "reviews", :force => true do |t|
+    t.boolean  "publish"
+    t.string   "name"
+    t.string   "phone"
+    t.string   "place"
+    t.integer  "square"
+    t.integer  "total_sum"
+    t.date     "date1"
+    t.date     "date2"
+    t.integer  "csi_id"
+    t.integer  "speed",         :limit => 1
+    t.integer  "quality",       :limit => 1
+    t.integer  "price",         :limit => 1
+    t.integer  "response",      :limit => 1
+    t.boolean  "recommend"
+    t.text     "planning"
+    t.date     "planning_time"
+    t.boolean  "accept_offers"
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "rubrics", :force => true do |t|

@@ -1,0 +1,17 @@
+%h1 Listing csis
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @csis.each do |csi|
+    %tr
+      %td= link_to 'Show', csi
+      %td= link_to 'Edit', edit_csi_path(csi)
+      %td= link_to 'Destroy', csi, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Csi', new_csi_path

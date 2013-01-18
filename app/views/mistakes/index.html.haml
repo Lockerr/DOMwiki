@@ -1,0 +1,21 @@
+%h1 Listing mistakes
+
+%table
+  %tr
+    %th Name
+    %th Description
+    %th
+    %th
+    %th
+
+  - @mistakes.each do |mistake|
+    %tr
+      %td= mistake.name
+      %td= mistake.description
+      %td= link_to 'Show', mistake
+      %td= link_to 'Edit', edit_mistake_path(mistake)
+      %td= link_to 'Destroy', mistake, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Mistake', new_mistake_path

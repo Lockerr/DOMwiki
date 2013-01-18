@@ -30,22 +30,20 @@
               %li= link_to t('categories'), categories_path
               %li= link_to t('subcategories'), subcategories_path
               %li= link_to t('rubrics'), rubrics_path
+              %li= link_to t('pages'), pages_path
+              %li= link_to t('reviews'), reviews_path
+              %li= link_to t('csis'), csis_path
+              
+              
 
     .container
 
       .content
         .row
-          .span9
+          .span12
             = bootstrap_flash
             = yield
-          .span3
-            .well.sidebar-nav
-              %h3 Sidebar
-              %ul.nav.nav-list
-                %li.nav-header Sidebar
-                %li= link_to "Link 1", "/path1"
-                %li= link_to "Link 2", "/path2"
-                %li= link_to "Link 3", "/path3"
+          
     
       %footer
         %p &copy; Company 2012

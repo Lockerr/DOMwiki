@@ -1,0 +1,16 @@
+= form_for @mistake do |f|
+  - if @mistake.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@mistake.errors.count, "error")} prohibited this mistake from being saved:"
+      %ul
+        - @mistake.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :description
+    = f.text_area :description
+  .actions
+    = f.submit 'Save'

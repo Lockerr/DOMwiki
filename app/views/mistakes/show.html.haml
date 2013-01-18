@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @mistake.name
+%p
+  %b Description:
+  = @mistake.description
+
+= link_to 'Edit', edit_mistake_path(@mistake)
+\|
+= link_to 'Back', mistakes_path

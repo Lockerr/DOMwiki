@@ -6,6 +6,11 @@
   %strong= model_class.human_attribute_name(:title) + ':'
   %br
   #page_title{:data => {:mercury => :full}}
+    = raw @page.title
+%p
+  %strong= model_class.human_attribute_name(:title) + ':'
+  %br
+  #page_title{:data => {:mercury => :full}}
     = @page.title
 %p
   %strong= model_class.human_attribute_name(:assessment) + ':'
@@ -27,7 +32,7 @@
   %strong= model_class.human_attribute_name(:body) + ':'
   %br
   #page_body{:data => {:mercury => :full}}
-    = raw @page.body
+    = @page.body
 
 .form-actions
   = link_to t('.back', :default => t("helpers.links.back")), pages_path, :class => 'btn'

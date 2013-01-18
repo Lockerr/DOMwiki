@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Category:
+  = @assessment.category_id
+%p
+  %b Assessment:
+  = @assessment.assessment
+%p
+  %b Description:
+  = @assessment.description
+
+= link_to 'Edit', edit_assessment_path(@assessment)
+\|
+= link_to 'Back', assessments_path
