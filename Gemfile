@@ -8,9 +8,7 @@ gem 'rails', '3.2.11'
 gem 'nested_set'
 
 gem 'hirb'
-
-
-
+gem 'capistrano'
 gem 'mysql2'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
@@ -39,18 +37,42 @@ end
 
 gem 'jquery-rails'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
 gem 'paperclip'
+
+gem 'rb-inotify', '~> 0.8.8'
+
+group :development, :test do
+  
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'ruby-prof'
+  gem 'minitest'
+  gem 'database_cleaner'
+end
+
+group :development do
+  gem 'autotest'
+  gem 'fuubar'
+  gem 'fuubar-cucumber'
+  gem 'hpricot'
+end
+
+group :test do
+  gem 'turn'
+  gem 'spork-rails'
+  gem 'guard-rspec'
+  gem 'cucumber'
+  gem 'cucumber-rails', :require => false
+  gem 'guard-cucumber'
+  gem 'database_cleaner'
+  gem 'rb-fsevent'
+  gem 'growl'
+  gem 'guard-spork'
+  gem 'launchy'
+  gem 'email_spec'
+  gem 'capybara'
+  gem 'ZenTest', '4.4.1'
+  gem 'rb-notifu'
+
+end
+

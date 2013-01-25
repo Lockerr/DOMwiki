@@ -1,23 +1,75 @@
-- model_class = Category
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize
-%table.table.table-striped
-  %thead
-    %tr
-      %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:name)
-      %th= model_class.human_attribute_name(:rubric_id)
-      %th= model_class.human_attribute_name(:created_at)
-      %th=t '.actions', :default => t("helpers.actions")
-  %tbody
-    - @categories.each do |category|
-      %tr
-        %td= link_to category.id, category_path(category)
-        %td= category.name
-        %td= category.rubric_id
-        %td=l category.created_at
-        %td
-          = link_to t('.edit', :default => t("helpers.links.edit")), edit_category_path(category), :class => 'btn btn-mini'
-          = link_to t('.destroy', :default => t("helpers.links.destroy")), category_path(category), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+.row
+  - for category in @categories
+    .media
+ 
+      .media-body
+        %h4.media-heading
+          %legend
+            .row-fluid
+
+              .span1
+                = category.id
+              .span5
+                
+                = category.name
+                %a.btn.btn-mini{href: edit_category_path(category)}
+                  %i.icon-edit
+                %a.btn.btn-mini.btn-success{href: new_category_category_path(category)}
+                  %i.icon-plus
+                %a.btn.btn-mini.btn-danger{href: category_path(category), :data => {method: :delete,  :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }}
+                  %i.icon-white.icon-remove
+        .row-fluid{style: 'margin-bottom: 5px;'}
+          .span1
+            %img.media-object{data:{src: 'holder.js/70x70'}}
+          .span11
+            %p= t('lorem')
+        .thumbnail
+
+          - for sub in category.children
+            .media
+              
+              .media-body{style: 'margin-left: 60px;'}
+                %h5.media-heading
+                  %legend
+                    .row-fluid
+                      .span1
+                        = sub.id
+                      .span5
+                        = sub.name
+                        %a.btn.btn-mini{href: edit_category_path(sub)}
+                          %i.icon-edit
+                        %a.btn.btn-mini.btn-success{href: new_category_category_path(sub)}
+                          %i.icon-plus
+                        %a.btn.btn-mini.btn-danger{href: category_path(sub), :data => {:method => :delete, :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }}
+                          %i.icon-white.icon-remove
+                        
+                        
+                .row-fluid{style: 'margin-bottom: 5px;'}
+                  .span1
+                    %img.media-object{data:{src: 'holder.js/70x70'}}
+                  .span11
+                    %p= t('lorem')
+                - if sub.children.any?
+                  .thumbnail
+                    - for subcategory in sub.children
+                      .media
+                        .media-body{style: 'margin-left: 60px;'}
+                          %h6.media-heading
+                            %legend
+                              .row-fluid
+                                .span1
+                                  = subcategory.id
+                                .span4
+                                  = subcategory.name
+                                  %a.btn.btn-mini{href: edit_category_path(subcategory)}
+                                    %i.icon-edit
+                                  %a.btn.btn-mini.btn-danger{href: category_path(subcategory), :data => {:method => :delete, :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }}
+                                    %i.icon-white.icon-remove
+                        .row-fluid{style: 'margin-bottom: 5px;'}
+                          .span2
+                            %img.media-object{data:{src: 'holder.js/162x100'}}
+                          .span10
+                            %p= t('lorem')
+
 
 = link_to t('.new', :default => t("helpers.links.new")), new_category_path, :class => 'btn btn-primary'

@@ -1,7 +1,135 @@
-%h1 Editing review
+.container
 
-= render 'form'
+= form_for @review do |f|
+  .container
+    
+    .row
+      .span3
+        %h1= t :new_review, scope: [:activerecord, :models]
+      .span3
+        = f.check_box :publish
+        = t :publish, scope: [:activerecord, :attributes, :review]
+      .span3
+        = link_to (t :cancel), 'cancel'
+        = f.submit :class => 'btn btn-main'
+    .row
+  
+      %legend
+        Contact details from people
+      = f.text_field :name, :placeholder => :name
+      = f.text_field :phone, :placeholder => :phone
+      = f.text_field :place, :placeholder => :place
+      = f.select :square, [100,200,300,400], prompt: 'square'
+      = f.select :total_sum, [100,200,300,400], prompt: 'total_sum'
+      .input-append
+        = f.text_field :date1, :placeholde => 'dd:mm:yyyy'
+    .row
+      %legend
+        Things
+    .row
+      .form.form-inline
+        .span4
+          .controls
+            .input-append
+              = search_field_tag 'search', 'search', :placeholder => "Search..."
+              %span.add-on
+                %i.icon-search
+        .span4
+          = link_to 'view attachable file: Example.xls', 'view attachable file'
+    .row{style: 'margin-top: 10px;'}
+      
+      %ul.thumbnails
+        - 15.times do
+          %li.span3.alert.alert-info{style: 'width: 226px;'}
+            
+            
+            %button.close{'data-dismiss' => 'alert'} &times;
+            thing
 
-= link_to 'Show', @review
-\|
-= link_to 'Back', reviews_path
+
+
+
+  .row
+    %legend CSI
+  .row
+    .span3
+      .row-fluid
+        .span8
+          Speed
+        .span4
+          = stars(3)
+      .row-fluid
+        = text_area_tag 'a', 'b', :class => 'span12'
+
+    .span3
+      .row-fluid
+        .span8
+          Quality
+        .span4
+          = stars(0)
+      .row-fluid
+        = text_area_tag 'a', 'b', :class => 'span12'
+
+    .span3
+      .row-fluid
+        .span8
+          Price
+        .span4
+          = stars(1)
+      .row-fluid
+        = text_area_tag 'a', 'b', :class => 'span12'
+
+
+    .span3
+      .row-fluid
+        .span8
+          Response
+        .span4
+          = stars(5)
+      .row-fluid
+        = text_area_tag 'a', 'b', :class => 'span12'
+
+  .row
+    .span3
+      Would recommend to friend:
+    .span2
+      .form-inline
+        %input.checkbox{type: :radio}
+        %label.radio Yes
+        %input.checkbox{type: :radio}
+        %label.radio No
+    .span3.offset1
+      To who:
+    
+      %a{:href => '#'}
+        New lead form
+
+  .row
+    .span3
+      What planning to do next:
+    .span2
+      %input{type: :text}
+    .span3.offset1
+      When:
+    
+      %select
+  .row
+    .span3
+      %h2
+        Categories
+    .span9
+      - for category in Category.all
+        %label.checkbox.inline
+         
+          = f.check_box :category_ids, {multiple: true, checked: @review.category_ids.include?(category.id) ? true : false}, category.id, nil
+          = category.name
+
+  .row
+    .span3
+      Need offers from companies:
+    .span2
+      .form-inline
+        %input.checkbox{type: :radio}
+        %label.radio Yes
+        %input.checkbox{type: :radio}
+        %label.radio No

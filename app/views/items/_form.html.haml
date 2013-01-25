@@ -1,0 +1,58 @@
+= form_for @item do |f|
+  .form.form-horizontal
+    .control-group
+      = f.label :brand_id, class: 'control-label'
+      .controls
+        = f.text_field :brand_name, data: {provide: :typeahead, source: Brand.all.map(&:name)}, autocomplete: :off
+
+
+    .control-group
+      = f.label :partnumber, class: 'control-label'
+      .controls
+        = f.text_field :partnumber, class: :span6
+    .control-group
+      = f.label :name, class: 'control-label'
+      .controls
+        = f.text_field :name, class: :span6
+    .control-group
+      = f.label :description, class: 'control-label'
+      .controls
+        = f.text_area :description, :rows => 5, class: :span6
+    .control-group
+      = f.label :price_from, class: 'control-label'
+      .controls
+        = f.text_field :price_from
+    .control-group
+      = f.label :price_to, class: 'control-label'
+      .controls
+        = f.text_field :price_to
+      
+    %legend
+      Categories
+    .control-group
+      %label.control-label
+        Category
+      .controls
+        .row-fluid
+          - for category in Category.roots
+            .span3
+              = f.check_box :category_ids, {multiple: true, checked: @item.category_ids.include?(category.id) ? true : false}, category.id, nil
+              = category.name
+              - for category in category.children
+                .row-fluid
+                  .span9.offset1
+                    = f.check_box :category_ids, {multiple: true, checked: @item.category_ids.include?(category.id) ? true : false}, category.id, nil
+                    = category.name
+                    - for category in category.children
+                      .row-fluid
+                        .span9.offset1
+                          = f.check_box :category_ids, {multiple: true, checked: @item.category_ids.include?(category.id) ? true : false}, category.id, nil
+                          = category.name
+
+
+
+          
+
+          
+  .actions
+    = f.submit 'save', class: [:btn, 'btn-primary']

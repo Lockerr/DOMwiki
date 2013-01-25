@@ -1,0 +1,43 @@
+.container
+  %legend
+    Edit subcategory
+  = form_for @category do |f|
+    
+    .form-horizontal
+      .control-group
+        %label.control-label
+          Name
+        .controls
+          = f.text_field :name, class: :span6
+      .control-group
+        %label.control-label
+          Description
+        .controls
+          = f.text_area :description, {:rows => 5, class: :span6}
+    .row
+
+      - @assessments.each do |assessment|
+        .span3
+          %legend
+            Assessment
+            = assessment.id
+            
+          = f.fields_for :assessments, assessment do |nest|
+            = nest.hidden_field :id
+            = nest.text_field :name, class: :span3
+            = nest.text_area :description, {rows: 5, class: :span3}
+    %hr
+    .row
+      brands
+
+    %hr
+    .row
+      - @mistakes.each do |mistake|
+        .span3
+          %legend
+            Mistakes
+            = mistake.id
+          = f.fields_for :mistakes, mistake do |nest|
+            = nest.hidden_field :id
+            = nest.text_field :name, class: :span3
+            = nest.text_area :description, {rows: 5, class: :span3}

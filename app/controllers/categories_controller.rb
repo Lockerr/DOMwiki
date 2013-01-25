@@ -2,7 +2,12 @@ class CategoriesController < ApplicationController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
+    if params[:category_id]
+      @categories = Category.find(params[:category_id]).children
+    else
+      @categories = Category.where(:parent_id => nil)
+    end
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -24,7 +29,7 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   # GET /categories/new.json
   def new
-    @category = Category.new
+    params[:category_id] ? @category= Category.find(params[:category_id]).children.new : @category = Category.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +40,28 @@ class CategoriesController < ApplicationController
   # GET /categories/1/edit
   def edit
     @category = Category.find(params[:id])
+    if @category.level == 2
+      @assessments = @category.assessments
+
+      (4 - @assessments.size).times {
+        @assessments << Assessment.new(:category_id => @category.id) 
+      }
+
+      
+
+      @brands = @category.brands
+      
+      @mistakes = @category.mistakes
+      
+      (4 - @mistakes.size).times do
+        @mistakes << Mistake.new(:category_id => @category.id)
+      end
+
+
+      render 'edit_subcategory'
+    else
+      render 'edit'
+    end
   end
 
   # POST /categories
@@ -44,7 +71,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: 'Category was successfully created.' }
+        format.html { redirect_to categories_path, notice: 'Category was successfully created.' }
         format.json { render json: @category, status: :created, location: @category }
       else
         format.html { render action: "new" }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130118065501) do
+ActiveRecord::Schema.define(:version => 20130124050208) do
 
   create_table "assessments", :force => true do |t|
     t.integer  "category_id"
@@ -19,14 +19,15 @@ ActiveRecord::Schema.define(:version => 20130118065501) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "name"
   end
 
   create_table "brands", :force => true do |t|
     t.string   "name"
+    t.text     "description"
     t.integer  "country_id"
-    t.text     "desc"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "brands_categories", :force => true do |t|
@@ -35,6 +36,11 @@ ActiveRecord::Schema.define(:version => 20130118065501) do
   end
 
   add_index "brands_categories", ["brand_id", "category_id"], :name => "index_brands_categories_on_brand_id_and_category_id"
+
+  create_table "brands_offers", :id => false, :force => true do |t|
+    t.integer "offer_id"
+    t.integer "brand_id"
+  end
 
   create_table "brands_rubrics", :force => true do |t|
     t.integer "brand_id"
@@ -60,12 +66,38 @@ ActiveRecord::Schema.define(:version => 20130118065501) do
     t.integer  "rgt"
     t.integer  "depth"
     t.integer  "contactor_id"
+    t.text     "description"
   end
+
+  create_table "categories_items", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "item_id"
+  end
+
+  create_table "categories_offers", :id => false, :force => true do |t|
+    t.integer "offer_id"
+    t.integer "category_id"
+  end
+
+  create_table "categories_reviews", :id => false, :force => true do |t|
+    t.integer "category_id"
+    t.integer "review_id"
+  end
+
+  add_index "categories_reviews", ["category_id", "review_id"], :name => "index_categories_reviews_on_category_id_and_review_id"
+  add_index "categories_reviews", ["review_id", "category_id"], :name => "index_categories_reviews_on_review_id_and_category_id"
 
   create_table "companies", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "countries", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "csis", :force => true do |t|
@@ -92,6 +124,22 @@ ActiveRecord::Schema.define(:version => 20130118065501) do
     t.datetime "updated_at",         :null => false
   end
 
+  create_table "items", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "price_from"
+    t.integer  "price_to"
+    t.integer  "brand_id"
+    t.string   "partnumber"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "items_offers", :id => false, :force => true do |t|
+    t.integer "offer_id"
+    t.integer "item_id"
+  end
+
   create_table "mercury_images", :force => true do |t|
     t.string   "image_file_name"
     t.string   "image_content_type"
@@ -106,6 +154,7 @@ ActiveRecord::Schema.define(:version => 20130118065501) do
     t.text     "description"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "category_id"
   end
 
   create_table "models", :force => true do |t|
@@ -124,6 +173,11 @@ ActiveRecord::Schema.define(:version => 20130118065501) do
 
   add_index "models_categories", ["model_id", "category_id"], :name => "index_models_categories_on_model_id_and_category_id"
 
+  create_table "models_offers", :id => false, :force => true do |t|
+    t.integer "offer_id"
+    t.integer "model_id"
+  end
+
   create_table "models_rubrics", :force => true do |t|
     t.integer "model_id"
     t.integer "rubric_id"
@@ -137,6 +191,18 @@ ActiveRecord::Schema.define(:version => 20130118065501) do
   end
 
   add_index "models_subcategories", ["model_id", "subcategory_id"], :name => "index_models_subcategories_on_model_id_and_subcategory_id"
+
+  create_table "offers", :force => true do |t|
+    t.integer  "company_id"
+    t.boolean  "publish"
+    t.string   "header"
+    t.text     "advert"
+    t.date     "date_start"
+    t.date     "date_end"
+    t.text     "conditions"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "pages", :force => true do |t|
     t.string   "title"

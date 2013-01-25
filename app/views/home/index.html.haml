@@ -21,7 +21,7 @@
                       - for subsub in subcategory.children
                         .span4
                           %small
-                            = link_to t("#{category.class.to_s}.#{category.name}.#{subcategory.name}.#{subsub.name}"), '#'
+                            = link_to t("#{category.class.to_s}.#{category.name}.#{subcategory.name}.#{subsub.name}"), category_path(subsub)
                             
 
 

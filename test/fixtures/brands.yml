@@ -2,10 +2,10 @@
 
 one:
   name: MyString
+  description: MyText
   country_id: 1
-  desc: MyText
 
 two:
   name: MyString
+  description: MyText
   country_id: 1
-  desc: MyText

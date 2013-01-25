@@ -18,7 +18,7 @@ class BrandsControllerTest < ActionController::TestCase
 
   test "should create brand" do
     assert_difference('Brand.count') do
-      post :create, brand: { country_id: @brand.country_id, desc: @brand.desc, name: @brand.name }
+      post :create, brand: { country_id: @brand.country_id, description: @brand.description, name: @brand.name }
     end
 
     assert_redirected_to brand_path(assigns(:brand))
@@ -35,7 +35,7 @@ class BrandsControllerTest < ActionController::TestCase
   end
 
   test "should update brand" do
-    put :update, id: @brand, brand: { country_id: @brand.country_id, desc: @brand.desc, name: @brand.name }
+    put :update, id: @brand, brand: { country_id: @brand.country_id, description: @brand.description, name: @brand.name }
     assert_redirected_to brand_path(assigns(:brand))
   end
 

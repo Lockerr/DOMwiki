@@ -1,18 +1,18 @@
 Build::Application.routes.draw do
   
+  resources :offers
+  resources :items
+  resources :countries
   resources :mistakes
-
-
   resources :assessments
-
-
   resources :csis
-
-
   resources :reviews
 
 
   get "home/index"
+  
+  resources :brands
+  
 
   resources :pages do
     member { put :mercury_update }
@@ -25,10 +25,11 @@ Build::Application.routes.draw do
     end
 
   mount Mercury::Engine => '/'
+  
+  resources :categories do
+    resources :categories
+  end
 
-  resources :subcategories
-
-  resources :categories
 
   resources :rubrics
 
@@ -36,6 +37,7 @@ Build::Application.routes.draw do
 
   resources :brands do
     resources :models
+    resources :items
   end
 
 

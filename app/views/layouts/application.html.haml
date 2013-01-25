@@ -15,25 +15,7 @@
 
 
   %body
-    .navbar.navbar-fixed-top
-      .navbar-inner
-        .container
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand(href="#") Build
-          .container.nav-collapse
-            %ul.nav
-              %li= link_to t('models'), models_path
-              %li= link_to t('brands'), brands_path
-              %li= link_to t('categories'), categories_path
-              %li= link_to t('subcategories'), subcategories_path
-              %li= link_to t('rubrics'), rubrics_path
-              %li= link_to t('pages'), pages_path
-              %li= link_to t('reviews'), reviews_path
-              %li= link_to t('csis'), csis_path
-              
+    = render 'nav_bar'              
               
 
     .container

@@ -1,0 +1,22 @@
+= cache 'categories_selector' do
+  %legend
+    Categories
+  .control-group
+    %label.control-label
+      Category
+    .controls
+      .row-fluid
+        - for category in Category.roots
+          .span3
+            = form.check_box :category_ids, {multiple: true, checked: @brand.category_ids.include?(category.id) ? true : false}, category.id, nil
+            = category.name
+            - for category in category.children
+              .row-fluid
+                .span9.offset1
+                  = form.check_box :category_ids, {multiple: true, checked: @brand.category_ids.include?(category.id) ? true : false}, category.id, nil
+                  = category.name
+                  - for category in category.children
+                    .row-fluid
+                      .span9.offset1
+                        = form.check_box :category_ids, {multiple: true, checked: @brand.category_ids.include?(category.id) ? true : false}, category.id, nil
+                        = category.name

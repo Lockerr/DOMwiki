@@ -1,17 +1,262 @@
-- model_class = Category
-.page-header
-  %h1=t '.title', :default => model_class.model_name.human
+.row
+  %legend
+    %h1
+      = @category.parent.name
+      \- 
+      = @category.name
+.container
+  .row
+    .span9
+      
+      .row-fluid
+        .span3
+          %legend
+            %h2{style: 'text-align: right;margin-top: -4px'}
+              What kinds
+        .span9
+          = @category.description.presence || t('lorem')
+      %hr/
+      .row-fluid
+        .span3
+          %legend
+            %h2{style: 'text-align: right;margin-top: -4px'}
+              Assessments
+        .span9
+          .row-fluid
+            %ul.thumbnails
+              - @category.assessments.each do |assessment|
+                %li.span3.thumbnail
+                  %h4= assessment.name.presence || 'lorem'
+                  %br/
+                  = assessment.description.presence || t('lorem')[0..rand(50)+50]
+      %hr/
+      .row-fluid
+        .span3
+          %legend
+            %h2{style: 'text-align: right;margin-top: -4px'}
+              Brands
+        .span9
+          .row-fluid
+            - for brand in @category.brands
+              .media
+                %img.pull-left.media-object{data: {src: 'holder.js/120x120'}}
+                .media-body
+                  %h5.media-heading
+                    = brand.name
+                  %p{style: 'text-align: justify;'}
+                    = brand.description
+                    .media
+                      %img.pull-left.media-object{data: {src: 'holder.js/90x90'}}
+                      .media-body
+                  
+                        - for item in brand.items.limit(3)
+                    
+                          %h6
+                            = item.name
+                          %p
+                            = item.description[0..150]
+                            %a{:href => '#', :rel => :popover, data: {trigger: :hover, content: item.description, 'original-title' => item.name, placement: :top}} >>>
+                          
+                          = "Price: #{item.price_from} - #{item.price_to}"
 
-%p
-  %strong= model_class.human_attribute_name(:name) + ':'
-  %br
-  = @category.name
-%p
-  %strong= model_class.human_attribute_name(:rubric_id) + ':'
-  %br
-  = @category.rubric_id
 
-.form-actions
-  = link_to t('.back', :default => t("helpers.links.back")), categories_path, :class => 'btn'
-  = link_to t('.edit', :default => t("helpers.links.edit")), edit_category_path(@category), :class => 'btn'
-  = link_to t('.destroy', :default => t("helpers.links.destroy")), category_path(@category), :method => "delete", :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger'
+            .media
+              %img.pull-left.media-object{data: {src: 'holder.js/120x120'}}
+              .media-body
+                %h5.media-heading
+                  Брэнд
+                %p{style: 'text-align: justify;'}
+                  = t('lorem')[0..rand(50)+250]
+                .row-fluid
+                  .span4
+                    %h6
+                      Model                    
+                    %p
+                      = t('lorem')[0..rand(50)+150]
+                      %br/
+                      Price: 30000$ - 40000$
+                  .span4
+                    %h6
+                      Model                    
+                    %p
+                      = t('lorem')[0..rand(50)+150]
+                      %br/
+                      Price: 30000$ - 40000$
+                  .span4
+                    %h6
+                      Model                    
+                    %p
+                      = t('lorem')[0..rand(50)+150]
+                      %br/
+                      Price: 30000$ - 40000$
+            .media
+              %img.pull-left.media-object{data: {src: 'holder.js/120x120'}}
+              .media-body
+                %h5.media-heading
+                  Brand
+                %p{style: 'text-align: justify;'}
+                  = t('lorem')[0..rand(50)+250]
+                  .media
+                    
+                    .media-body
+                      %h5.media-heading
+                        Model
+                      %p
+                        = t('lorem')[0..rand(50)+150]    
+                      %p
+                        Price: 30000$ - 40000$
+                  .media
+                    %img.pull-left.media-object{data: {src: 'holder.js/90x90'}}
+                    .media-body
+                      %h5.media-heading
+                        Model
+                      %p
+                        = t('lorem')[0..rand(50)+150]    
+                      %p
+                        Price: 30000$ - 40000$
+                  .media
+                    %a.pull-left.media-object{:href => '#'}
+                      %img{data: {src: 'holder.js/90x90'}}
+                    .media-body
+                      %a{href: '#'}
+                        %h5.media-heading
+                          Model
+                      %p
+                        = t('lorem')[0..rand(50)+150]    
+                      %p
+                        Price: 30000$ - 40000$
+
+          .row-fluid
+            .media
+              %img.pull-left.media-object{data: {src: 'holder.js/120x120'}}
+              .media-body
+                %h5.media-heading
+                  Брэнд
+                %p{style: 'text-align: justify;'}
+                  = t('lorem')[0..rand(50)+250]
+                .row-fluid
+                  .span4
+                    %h6
+                      Model                    
+                    %p
+                      = t('lorem')[0..rand(50)+150]
+                      %br/
+                      Price: 30000$ - 40000$
+                  .span4
+                    %h6
+                      Model                    
+                    %p
+                      = t('lorem')[0..rand(50)+150]
+                      %br/
+                      Price: 30000$ - 40000$
+                  .span4
+                    %h6
+                      Model                    
+                    %p
+                      = t('lorem')[0..rand(50)+150]
+                      %br/
+                      Price: 30000$ - 40000$
+            .media
+              %img.pull-left.media-object{data: {src: 'holder.js/120x120'}}
+              .media-body
+                %h5.media-heading
+                  Brand
+                %p{style: 'text-align: justify;'}
+                  = t('lorem')[0..rand(50)+250]
+                  .media
+                    
+                    .media-body
+                      %h5.media-heading
+                        Model
+                      %p
+                        = t('lorem')[0..rand(50)+150]    
+                      %p
+                        Price: 30000$ - 40000$
+                  .media
+                    %img.pull-left.media-object{data: {src: 'holder.js/90x90'}}
+                    .media-body
+                      %h5.media-heading
+                        Model
+                      %p
+                        = t('lorem')[0..rand(50)+150]    
+                      %p
+                        Price: 30000$ - 40000$
+                  .media
+                    %a.pull-left.media-object{:href => '#'}
+                      %img{data: {src: 'holder.js/90x90'}}
+                    .media-body
+                      %a{href: '#'}
+                        %h5.media-heading
+                          Model
+                      %p
+                        = t('lorem')[0..rand(50)+150]    
+                      %p
+                        Price: 30000$ - 40000$
+
+                  
+              
+      %hr/
+      .row-fluid
+        
+        .span3
+          %legend
+            %h2{style: 'text-align: right;margin-top: -4px'}
+              Mistakes
+        
+        .span9
+          
+          - (@category.mistakes).each_slice(4).to_a.each do |row|
+            .row-fluid
+              - row.each do |mistake|
+                .span3
+                  %h4= mistake.name.presence || 'lorem'  
+                  %br/
+                  = mistake.description.presence || t('lorem')[0..rand(50)+50]
+      %hr/
+      .row-fluid
+        .span3
+          %legend
+            %h2{style: 'text-align: right;margin-top: -4px'}
+              Who
+        .span9
+          %p= t('lorem')[0..rand(50)+250]
+          %table.table-striped.table
+            - 6.times do
+              %tr
+                %td Company1
+                %td Address1
+                %td
+                  Rating
+                  %span.star
+                    %i.icon-star
+                  %span.star
+                    %i.icon-star
+                  %span.star
+                    %i.icon-star
+                  %span.star
+                    %i.icon-star-empty
+                  %span.star
+                    %i.icon-star-empty
+                
+                %td
+                  %a{:href => '#'}
+                    Moar info
+
+    .span3
+      .well.well-small
+        - if @category.reviews.any?
+          - for review in @category.reviews
+            %legend
+              %h5
+                = [review.name, review.phone, review.place].join(', ')
+            %p
+              = t('lorem')[0..rand(50)+50]
+        - else
+          no reviews yet
+
+
+      .well.well-small
+        offers
+
+
+

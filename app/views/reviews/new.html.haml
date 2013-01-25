@@ -1,5 +1,7 @@
 .container
-  = form_for Review.new do |f|
+
+= form_for @review do |f|
+  .container
     
     .row
       .span3
@@ -154,8 +156,9 @@
     .span9
       - for category in Category.all
         %label.checkbox.inline
-          %input{type: :checkbox}
-            = category.name
+         
+          = f.check_box :category_ids, {multiple: true, checked: @review.category_ids.include?(category.id) ? true : false}, category.id, nil
+          = category.name
 
   .row
     .span3

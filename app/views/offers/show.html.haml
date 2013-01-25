@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Company:
+  = @offer.company_id
+%p
+  %b Publish:
+  = @offer.publish
+%p
+  %b Header:
+  = @offer.header
+%p
+  %b Advert:
+  = @offer.advert
+%p
+  %b Date start:
+  = @offer.date_start
+%p
+  %b Date end:
+  = @offer.date_end
+%p
+  %b Conditions:
+  = @offer.conditions
+
+= link_to 'Edit', edit_offer_path(@offer)
+\|
+= link_to 'Back', offers_path

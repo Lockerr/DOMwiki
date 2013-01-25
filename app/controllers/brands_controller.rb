@@ -13,11 +13,16 @@ class BrandsController < ApplicationController
   # GET /brands/1
   # GET /brands/1.json
   def show
-    @brand = Brand.find(params[:id])
+    if brand_name = params[:brand_name]
+      @brand = Brand.find_by_name brand_name
+    else
+      @brand = Brand.find(params[:id])
+    end
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @brand }
+      format.js
     end
   end
 
@@ -81,3 +86,5 @@ class BrandsController < ApplicationController
     end
   end
 end
+
+
