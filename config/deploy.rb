@@ -27,7 +27,7 @@ after 'deploy:update_code', :roles => :app do
     run "rm -f #{current_release}/config/#{yaml_name}.yml"
     run "ln -s #{deploy_to}/shared/config/#{yaml_name}.yml #{current_release}/config/#{yaml_name}.yml"
   end
-  run "cd #{current_release} ; rake db:migrate"
+  # run "cd #{current_release} ; rake db:migrate"
 
 end
 
