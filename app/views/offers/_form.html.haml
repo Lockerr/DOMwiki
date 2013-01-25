@@ -37,16 +37,20 @@
       .control-group
         = f.label :brands, class: 'control-label'
         .controls
-          = f.hidden_field :brand_ids
+
           = text_field_tag :offer_brands_name, '', data: {provide: :typeahead, source: Brand.all.map(&:name)}, autocomplete: :off
-    .span3#offer_items_selector
+      - @offer.brands.each do |offer|
+        = render offer
+    .span3#items_selector
       %legend
         Items
       .control-group
         = f.label :items, class: 'control-label'
         .controls
-          = f.hidden_field :item_ids
+
           = text_field_tag :offer_items_typeahead, '', data: {provide: :typeahead, source: []} , autocomplete: :off
+      - @offer.items.each do |item|
+        = render item
 
   .row
     

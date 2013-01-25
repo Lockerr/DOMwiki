@@ -54,8 +54,9 @@
                           %h6
                             = item.name
                           %p
-                            = item.description[0..150]
-                            %a{:href => '#', :rel => :popover, data: {trigger: :hover, content: item.description, 'original-title' => item.name, placement: :top}} >>>
+                            - if item.description
+                              = item.description[0..150]
+                              %a{:href => '#', :rel => :popover, data: {trigger: :hover, content: item.description, 'original-title' => item.name, placement: :top}} >>>
                           
                           = "Price: #{item.price_from} - #{item.price_to}"
 

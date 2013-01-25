@@ -6,7 +6,10 @@ Build::Application.routes.draw do
   resources :mistakes
   resources :assessments
   resources :csis
-  resources :reviews
+  resources :reviews do
+    resources :items
+  end
+
 
 
   get "home/index"

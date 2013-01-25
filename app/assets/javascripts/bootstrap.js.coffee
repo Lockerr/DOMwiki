@@ -22,4 +22,10 @@ $ ->
     value = @.value if ($(@).data('typeahead').source.indexOf(@.value) >= 0)
     if value
       $.ajax
-        url: "/items/1.js?item_name=#{value}"
+        url: "/items/1.js?item_name=#{value}" 
+
+  $('#review_items_typeahead').live 'change', ->
+    value = @.value if ($(@).data('typeahead').source.indexOf(@.value) >= 0)
+    if value
+      $.ajax
+        url: "/items/1.js?item_name=#{value}" 

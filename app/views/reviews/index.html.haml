@@ -1,12 +1,16 @@
 %legend
   Listing Review
 %table.table.table-striped.table-bordered
-  - %w(csi_id phone name place date1 date2).each do |attr|
+  - %w(csi_id phone name place date1 date2 actions).each do |attr|
     %th=attr
   - for review in @reviews
     %tr
       - %w(csi_id phone name place date1 date2).each do |attr|
         %td=review.send(attr)
+      %td
+        =link_to 'edit', edit_review_path(review), class: :btn
+        =link_to 'delete', review_path(review),{method: :delete}, class: :btn
+ 
 
 = link_to 'new review', new_review_path, class: :btn
 

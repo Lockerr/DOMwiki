@@ -1,5 +1,5 @@
 class Offer < ActiveRecord::Base
-  attr_accessible :advert, :company_id, :conditions, :date_end, :date_start, :header, :publish, :brand_ids
+  attr_accessible :advert, :company_id, :conditions, :date_end, :date_start, :header, :publish, :brand_ids, :category_ids, :item_ids
 
   has_and_belongs_to_many :items
   has_and_belongs_to_many :models
@@ -13,5 +13,8 @@ class Offer < ActiveRecord::Base
   def brand_name
     brands.first.name if brands.any?
   end
+
+  
+
 
 end
