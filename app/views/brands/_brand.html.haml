@@ -1,0 +1,6 @@
+.alert.alert-info{style: 'margin-bottom: 5px;'}
+  %button.close{type: :button, data:{dismiss: :alert}}
+    &times;
+  = brand.name
+  %input{id: "offer_brand_ids_#{brand.id}", name: "offer[brand_ids][]", value: brand.id, type: :hidden}
+ 

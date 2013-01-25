@@ -3,6 +3,7 @@ class Review < ActiveRecord::Base
   attr_accessor :search
 
   has_and_belongs_to_many :categories
+  has_and_belongs_to_many :items
 
   
 end

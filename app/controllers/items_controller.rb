@@ -18,11 +18,16 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
-    @item = Item.find(params[:id])
+    if item_name = params[:item_name]
+      @item = Item.find_by_name item_name
+    else
+      @item = Item.find(params[:id])
+    end
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @item }
+      format.js
     end
   end
 

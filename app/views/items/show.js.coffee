@@ -1,0 +1,1 @@
+$('#offer_items_selector').append('<%= j render @item %>')

@@ -1,19 +1,18 @@
-%h1 Listing reviews
-
-%table
-  %tr
-    %th Published
-    %th
-    %th
-    %th
-
-  - @reviews.each do |review|
+%legend
+  Listing Review
+%table.table.table-striped.table-bordered
+  - %w(csi_id phone name place date1 date2).each do |attr|
+    %th=attr
+  - for review in @reviews
     %tr
-      %td= review.published
-      %td= link_to 'Show', review
-      %td= link_to 'Edit', edit_review_path(review)
-      %td= link_to 'Destroy', review, method: :delete, data: { confirm: 'Are you sure?' }
+      - %w(csi_id phone name place date1 date2).each do |attr|
+        %td=review.send(attr)
 
-%br
+= link_to 'new review', new_review_path, class: :btn
 
-= link_to 'New Review', new_review_path
+
+  
+
+
+
+

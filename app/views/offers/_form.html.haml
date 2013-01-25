@@ -37,15 +37,19 @@
       .control-group
         = f.label :brands, class: 'control-label'
         .controls
+          = f.hidden_field :brand_ids
           = text_field_tag :offer_brands_name, '', data: {provide: :typeahead, source: Brand.all.map(&:name)}, autocomplete: :off
-    .span3#offers_items_objects
+    .span3#offer_items_selector
       %legend
         Items
       .control-group
         = f.label :items, class: 'control-label'
         .controls
-          = text_field_tag :offers_items_name, '', data: {provide: :typeahead, source: @offer.brands.joins(:items).select(['items.name']).map(&:name).presence || Item.all.map(&:name)} , autocomplete: :off
+          = f.hidden_field :item_ids
+          = text_field_tag :offer_items_typeahead, '', data: {provide: :typeahead, source: []} , autocomplete: :off
+
   .row
+    
     %legend
       Categories
     .control-group

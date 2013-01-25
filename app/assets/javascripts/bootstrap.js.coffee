@@ -15,5 +15,11 @@ $ ->
     value = @.value if ($(@).data('source').indexOf(@.value) >= 0)
     if value
       $.ajax
-        url: "/brands/1.js?brand_name=#{value}"
-  # $("#offer_items_name").live 'change', ->
+        url: "/brands/1.js?brand_name=#{value}&ids=#{window.brand_ids}"
+  
+  $("#offer_items_typeahead").live 'change', ->
+    console.log @.value
+    value = @.value if ($(@).data('typeahead').source.indexOf(@.value) >= 0)
+    if value
+      $.ajax
+        url: "/items/1.js?item_name=#{value}"

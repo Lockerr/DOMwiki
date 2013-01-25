@@ -14,7 +14,7 @@
       
         = f.text_field :country_name, data: {provide: :typeahead, source: Country.all.map(&:name)}, autocomplete: :off
         
-    = render partial: 'categories_selector', locals: {form: f}
+    = render partial: 'categories_selector', locals: {form: f, object: @brand}
 
 
 

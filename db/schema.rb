@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130124050208) do
+ActiveRecord::Schema.define(:version => 20130125112122) do
 
   create_table "assessments", :force => true do |t|
     t.integer  "category_id"
@@ -138,6 +138,11 @@ ActiveRecord::Schema.define(:version => 20130124050208) do
   create_table "items_offers", :id => false, :force => true do |t|
     t.integer "offer_id"
     t.integer "item_id"
+  end
+
+  create_table "items_reviews", :id => false, :force => true do |t|
+    t.integer "item_id"
+    t.integer "review_id"
   end
 
   create_table "mercury_images", :force => true do |t|
