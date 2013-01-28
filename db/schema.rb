@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130128054815) do
+ActiveRecord::Schema.define(:version => 20130128104249) do
 
   create_table "assessments", :force => true do |t|
     t.integer  "category_id"
@@ -36,6 +36,11 @@ ActiveRecord::Schema.define(:version => 20130128054815) do
   end
 
   add_index "brands_categories", ["brand_id", "category_id"], :name => "index_brands_categories_on_brand_id_and_category_id"
+
+  create_table "brands_companies", :id => false, :force => true do |t|
+    t.integer "company_id"
+    t.integer "brand_id"
+  end
 
   create_table "brands_offers", :id => false, :force => true do |t|
     t.integer "offer_id"

@@ -21,14 +21,22 @@ role :web, domain
 role :app, domain
 role :db, domain, :primary => true
 
+before "deploy:assets:precompile", "bundle:install"
+
 after 'deploy:update_code', :roles => :app do
-  run "cd #{current_release} ; bundle install"
+  
   %w{database config}.each do |yaml_name|
     run "rm -f #{current_release}/config/#{yaml_name}.yml"
     run "ln -s #{deploy_to}/shared/config/#{yaml_name}.yml #{current_release}/config/#{yaml_name}.yml"
   end
   # run "cd #{current_release} ; rake db:migrate"
 
+end
+
+namespace :bundle do
+  task :install do
+    run "cd #{current_release} ; bundle install"
+  end
 end
 
 task :backup, :roles => :db, :only => {:primary => true} do

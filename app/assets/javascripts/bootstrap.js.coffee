@@ -39,3 +39,9 @@ $ ->
       $.ajax
         url: "/brands/1.js?brand_name=#{value}&object=#{$(@).data('model')}"
 
+  $('#categories_selector').live 'change', ->
+    value = @.value if ($(@).data('typeahead').source.indexOf(@.value) >= 0)
+    if value
+      $.ajax
+        url: "/categories/1.js?category_name=#{value}"
+

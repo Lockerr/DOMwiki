@@ -2,5 +2,5 @@
   %button.close{type: :button, data:{dismiss: :alert}}
     &times;
   = brand.name
-  %input{id: "#{params[:model]}_brand_ids_#{brand.id}", name: "#{params[:model]}[brand_ids][]", value: brand.id, type: :hidden}
+  %input{id: "#{object}_brand_ids_#{brand.id}", name: "#{object}[brand_ids][]", value: brand.id, type: :hidden}
  

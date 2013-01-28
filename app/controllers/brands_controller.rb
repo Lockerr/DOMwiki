@@ -10,7 +10,7 @@ class BrandsController < ApplicationController
     end
   end
 
-  # GET /brands/1
+  # GET /brands/
   # GET /brands/1.json
   def show
     if brand_name = params[:brand_name]

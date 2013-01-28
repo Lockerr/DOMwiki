@@ -11,7 +11,7 @@ unless '<%= params[:object] %>' == 'company'
 
 
 if window.brand_ids.indexOf('<%= @brand.id %>') < 0
-  $('#<%= params[:object] %>_brands_selector').append('<%= j render @brand %>')
+  $('#<%= params[:object] %>_brands_selector').append("<%= j render partial: 'brand', locals:{brand: @brand, object: params[:object]} %>")
   window.brand_ids.push('<%= @brand.id %>')
 
 
