@@ -20,7 +20,7 @@
     = f.select :square, [100,200,300,400], prompt: 'square'
     = f.select :total_sum, [100,200,300,400], prompt: 'total_sum'
     .input-append
-      = f.text_field :date1, :placeholde => 'dd:mm:yyyy'
+      = f.text_field :date1, :placeholder => 'Created_at dd:mm:yyyy', class: :datepicker, value: (@review.date1.strftime('%d/%m/%Y') if @review.date1)
   .row
     %legend
       Things
@@ -55,38 +55,40 @@
         .span8 Speed
         .span4= stars(3)
       .row-fluid
-        = text_area_tag 'a', 'нет поля :( забыл', :class => 'span12'
+        = f.text_area :speed_description, class: :span12, rows: 4
+        
 
     .span3
       .row-fluid
         .span8 Quality
         .span4= stars(0)
       .row-fluid
-        = text_area_tag 'a', 'нет поля :( забыл', :class => 'span12'
+        = f.text_area :quality_description, class: :span12, rows: 4
+        
 
     .span3
       .row-fluid
         .span8 Price
         .span4= stars(1)
       .row-fluid
-        = text_area_tag 'a', 'нет поля :( забыл', :class => 'span12'
+        = f.text_area :price_description, class: :span12, rows: 4
 
 
     .span3
       .row-fluid
         .span8 Response
-        .span4= stars(5)
+        .span4= stars(4)
       .row-fluid
-        = text_area_tag 'a', 'нет поля :( забыл', :class => 'span12'
+        = f.text_area :response_description, class: :span12, rows: 4
 
   .row
     .span3
       Would recommend to friend:
     .span2
       .form-inline
-        %input.checkbox{type: :radio}
+        = f.radio_button :recommend, true
         %label.radio Yes
-        %input.checkbox{type: :radio}
+        = f.radio_button :recommend, false
         %label.radio No
     .span3.offset1
       To who:
@@ -98,20 +100,20 @@
     .span3
       What planning to do next:
     .span2
-      %input{type: :text}
+      = f.text_field :planning
     .span3.offset1
       When:
     
-      %select
+      = f.text_field :planning_time, class: :datepicker
 
   .row
     .span3
       Need offers from companies:
     .span2
       .form-inline
-        %input.checkbox{type: :radio}
+        = f.radio_button :accept_offers, true
         %label.radio Yes
-        %input.checkbox{type: :radio}
+        = f.radio_button :accept_offers, false
         %label.radio No
   = render partial: 'categories_selector', locals: {form: f, object: @review}
   

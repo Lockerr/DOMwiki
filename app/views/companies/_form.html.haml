@@ -1,13 +1,56 @@
 = form_for @company do |f|
-  - if @company.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@company.errors.count, "error")} prohibited this company from being saved:"
-      %ul
-        - @company.errors.full_messages.each do |msg|
-          %li= msg
+  .row
+    .span4
+      .form-horizontal
+        .control-group
+          %lablel.control-label
+            Company
+          .controls
+            = f.text_field :name
+        .control-group
+          %lablel.control-label
+            Foundation
+          .controls
+            = f.text_field :foundation, class: :datepicker
+        .control-group
+          %lablel.control-label
+            Employers
+          .controls
+            = f.text_field :employers
+    .span8
+      .row-fluid
+        .span12
+          .form-horizontal
+            %label.control-label
+              Published
+            .controls
+              = f.check_box :published 
+      .row-fluid
+        .span5.offset1#company_brands_selector
+          = text_field_tag 'brands_selector',nil, {placeholder: :brands, data: {provide: :typeahead, source: Brand.all.map(&:name), model: :company}, autocomplete: :off}
+        .span5.offset1
+          = text_field_tag 'companies_selector',nil, {placeholder: :categories, data: {provide: :typeahead, source: Category.all.map(&:name), model: :category}, autocomplete: :off}
+  .row
+    .form-horizontal
+      .span4
+        .control-group
+          %label.control-label
+            Slogan
+          .controls
+            = f.text_field :slogan
+        .control-group
+          %label.control-label
+            SWAT
+          .controls
+            = f.text_area :swat, rows: 5
+      
+          
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .actions
-    = f.submit 'Save'
+  = f.submit class: :btn
+  = link_to 'Cancel', '#'
+
+%br/
+= controller_name.singularize
+
+
+  

@@ -1,4 +1,4 @@
-class CsisController < ApplicationController
+class CompaniessController < ApplicationController
   # GET /csis
   # GET /csis.json
   def index

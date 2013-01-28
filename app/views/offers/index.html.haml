@@ -1,6 +1,6 @@
 %h1 Listing offers
 
-%table
+%table.table.table-striped.table-bordered
   %tr
     %th Company
     %th Publish
@@ -9,23 +9,22 @@
     %th Date start
     %th Date end
     %th Conditions
-    %th
-    %th
-    %th
+    %th{style: 'width: 9%;'} actions
 
   - @offers.each do |offer|
     %tr
-      %td= offer.company_id
+      %td= offer.company.try(:name)
       %td= offer.publish
       %td= offer.header
       %td= offer.advert
       %td= offer.date_start
       %td= offer.date_end
       %td= offer.conditions
-      %td= link_to 'Show', offer
-      %td= link_to 'Edit', edit_offer_path(offer)
-      %td= link_to 'Destroy', offer, method: :delete, data: { confirm: 'Are you sure?' }
+      %td
+        = link_to glyph(:search), offer, class: 'btn btn-mini'
+        = link_to glyph(:edit), edit_offer_path(offer), class: 'btn btn-mini'
+        = link_to glyph(:remove), offer, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
 
 %br
 
-= link_to 'New Offer', new_offer_path
+= link_to 'New Offer', new_offer_path, class: :btn

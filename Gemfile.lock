@@ -35,6 +35,8 @@ GEM
     autotest (4.4.6)
       ZenTest (>= 4.4.1)
     bcrypt-ruby (3.0.1)
+    bootstrap-datepicker-rails (0.6.37)
+      railties (>= 3.0)
     builder (3.0.4)
     capistrano (2.13.4)
       highline
@@ -297,6 +299,7 @@ PLATFORMS
 DEPENDENCIES
   ZenTest (= 4.4.1)
   autotest
+  bootstrap-datepicker-rails
   capistrano
   capybara
   coffee-rails (~> 3.2.1)

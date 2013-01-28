@@ -7,6 +7,8 @@ jQuery ->
 
 
 $ ->
+  $('.datepicker').datepicker({language: 'ru', format: 'dd/mm/yyyy'})
+  
   $("#item_brand_name").live 'change', ->
     console.log @.value if ($(@).data('source').indexOf(@.value) >= 0)
 
@@ -28,4 +30,12 @@ $ ->
     value = @.value if ($(@).data('typeahead').source.indexOf(@.value) >= 0)
     if value
       $.ajax
-        url: "/items/1.js?item_name=#{value}" 
+        url: "/items/1.js?item_name=#{value}"
+
+
+  $('#brands_selector').live 'change', ->
+    value = @.value if ($(@).data('typeahead').source.indexOf(@.value) >= 0)
+    if value
+      $.ajax
+        url: "/brands/1.js?brand_name=#{value}&object=#{$(@).data('model')}"
+

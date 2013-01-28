@@ -19,6 +19,8 @@ gem 'mercury-rails'
 gem 'thin'
 gem 'less-rails'
 gem 'therubyracer'
+gem 'bootstrap-datepicker-rails'
+gem 'russian'
 
 group :production do
 #  gem 'pg'

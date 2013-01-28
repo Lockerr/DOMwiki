@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130125112122) do
+ActiveRecord::Schema.define(:version => 20130128054815) do
 
   create_table "assessments", :force => true do |t|
     t.integer  "category_id"
@@ -88,19 +88,6 @@ ActiveRecord::Schema.define(:version => 20130125112122) do
   add_index "categories_reviews", ["review_id", "category_id"], :name => "index_categories_reviews_on_review_id_and_category_id"
 
   create_table "companies", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "countries", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  create_table "csis", :force => true do |t|
     t.string   "ceo"
     t.string   "ceo_since"
     t.text     "ceo_description"
@@ -122,6 +109,13 @@ ActiveRecord::Schema.define(:version => 20130125112122) do
     t.boolean  "published"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+  end
+
+  create_table "countries", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "items", :force => true do |t|
@@ -230,16 +224,20 @@ ActiveRecord::Schema.define(:version => 20130125112122) do
     t.date     "date1"
     t.date     "date2"
     t.integer  "csi_id"
-    t.integer  "speed",         :limit => 1
-    t.integer  "quality",       :limit => 1
-    t.integer  "price",         :limit => 1
-    t.integer  "response",      :limit => 1
+    t.integer  "speed",                :limit => 1
+    t.integer  "quality",              :limit => 1
+    t.integer  "price",                :limit => 1
+    t.integer  "response",             :limit => 1
     t.boolean  "recommend"
     t.text     "planning"
     t.date     "planning_time"
     t.boolean  "accept_offers"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+    t.text     "speed_description"
+    t.text     "quality_description"
+    t.text     "price_description"
+    t.text     "response_description"
   end
 
   create_table "rubrics", :force => true do |t|

@@ -10,16 +10,14 @@
           = f.label :date_start, class: 'control-label'
           .controls
             .input-append
-              = f.text_field :date_start
-              %span.add-on
-                %i.icon-calendar
+              = f.text_field :date_start, class: :datepicker
+              
         .control-group
           = f.label :date_end, class: 'control-label'
           .controls
             .input-append
-              = f.text_field :date_end
-              %span.add-on
-                %i.icon-calendar
+              = f.text_field :date_end, class: :datepicker
+              
     .span4
       .form-horizontal
         .control-group
@@ -75,11 +73,4 @@
                         .span9.offset1
                           = f.check_box :category_ids, {multiple: true, checked: @offer.category_ids.include?(category.id) ? true : false}, category.id, nil
                           = category.name
-
-
-
-
-
-
-
-Offer(id: integer, company_id: integer, publish: boolean, header: string, advert: text, date_start: date, date_end: date, conditions: text, created_at: datetime, updated_at: datetime) 
+  = f.submit class: 'btn btn-large btn-primary'

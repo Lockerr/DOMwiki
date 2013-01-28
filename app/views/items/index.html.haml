@@ -1,25 +1,28 @@
-%h1 Listing items
+%legend Listing items
 
-%table
+%table.table.table-striped.table-bordered
   %tr
+    %th Brand
     %th Name
     %th Description
     %th Price from
     %th Price to
-    %th
-    %th
-    %th
+    %th{style: 'width: 9%;'} actions
+    
+    
 
   - @items.each do |item|
     %tr
+      %td= item.brand.try(:name)
       %td= item.name
       %td= item.description
       %td= item.price_from
       %td= item.price_to
-      %td= link_to 'Show', item
-      %td= link_to 'Edit', edit_item_path(item)
-      %td= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' }
+      %td
+        = link_to glyph(:search), item, class: 'btn btn-mini'
+        = link_to glyph(:edit), edit_item_path(item), class: 'btn btn-mini'
+        = link_to glyph(:remove), item, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
 
 %br
 
-= link_to 'New Item', new_item_path
+= link_to 'New Item', new_item_path, class: :btn

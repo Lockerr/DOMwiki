@@ -1,19 +1,24 @@
-%h1 Listing companies
-
-%table
-  %tr
-    %th Name
-    %th
-    %th
-    %th
-
-  - @companies.each do |company|
+%legend
+  Listing companys
+- if @companies.presence
+  %table.table.table-striped.table-bordered
     %tr
-      %td= company.name
-      %td= link_to 'Show', company
-      %td= link_to 'Edit', edit_company_path(company)
-      %td= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }
+      %th Name
+      %th Description
+      %th Country
+      %th{style: 'width: 9%;'} actions
+      
 
-%br
+    - @companies.each do |company|
+      %tr
+        %td= company.name
+        %td= company.description
+        %td= company.country.try :name
+        %td
+          = link_to glyph(:search), company, class: 'btn btn-mini'
+          = link_to glyph(:edit), edit_company_path(company), class: 'btn btn-mini'
+          = link_to glyph(:remove), company, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-mini btn-danger'
 
-= link_to 'New Company', new_company_path
+  %br
+
+= link_to 'New Brand', new_brand_path, class: :btn
