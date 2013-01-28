@@ -1,6 +1,6 @@
-.alert.alert-info{style: 'margin-bottom: 5px;'}
+.alert.item.alert-info{style: 'margin-bottom: 5px;', :id => item.id}
   %button.close{type: :button, data:{dismiss: :alert}}
     &times;
   = item.name
-  %input{id: "offer_item_ids_#{item.id}", name: "offer[item_ids][]", value: item.id, type: :hidden}
+  %input{id: "#{object}_item_ids_#{item.id}", name: "#{object}[item_ids][]", value: item.id, type: :hidden}
  

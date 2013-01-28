@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  attr_accessible :name, :rubric_id, :parent_id, :description, :assessments_attributes, :mistakes_attributes
+  attr_accessible :name, :rubric_id, :parent_id, :description, :assessments_attributes, :mistakes_attributes, :brand_ids
   
   has_and_belongs_to_many :models
   has_and_belongs_to_many :brands

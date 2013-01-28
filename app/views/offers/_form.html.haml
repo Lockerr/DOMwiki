@@ -37,8 +37,8 @@
         .controls
 
           = text_field_tag :offer_brands_name, '', data: {provide: :typeahead, source: Brand.all.map(&:name)}, autocomplete: :off
-      - @offer.brands.each do |offer|
-        = render offer
+      - @offer.brands.each do |brand|
+        = render brand
     .span3#items_selector
       %legend
         Items

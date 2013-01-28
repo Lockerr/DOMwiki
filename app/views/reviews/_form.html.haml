@@ -23,7 +23,7 @@
       = f.text_field :date1, :placeholder => 'Created_at dd:mm:yyyy', class: :datepicker, value: (@review.date1.strftime('%d/%m/%Y') if @review.date1)
   .row
     %legend
-      Things
+      Items
   .row
     .form.form-inline
       .span4#items_selector
@@ -31,6 +31,7 @@
           .input-append
     
             = text_field_tag :review_items_typeahead, '', data: {provide: :typeahead, source: Item.select([:name]).map(&:name)} , autocomplete: :off, :placeholder => "Search..."
+            
             
 
             %span.add-on
