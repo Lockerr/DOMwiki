@@ -10,6 +10,8 @@ class Brand < ActiveRecord::Base
 
   has_many :items
   
+  default_scope  includes(:country)
+  
   accepts_nested_attributes_for :country
   accepts_nested_attributes_for :categories
 

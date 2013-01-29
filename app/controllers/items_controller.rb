@@ -3,9 +3,9 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     if brand_name = params[:brand_name]
-      @items = Brand.find_by_name(brand_name).items
+      @items = Brand.find_by_name(brand_name).items.includes(:brand)
     else
-      @items = Item.all
+      @items = Item.includes(:brand)
     end
 
     respond_to do |format|
@@ -58,16 +58,12 @@ class ItemsController < ApplicationController
         format.json { render json: @item, status: :created, location: @item }
       else
         flash[:error] = @item.errors.full_messages.join('. ')
-  
-        
-
-        
         format.html { render action: "new"}
         format.json { render json: @item.errors, status: :unprocessable_entity }
       end
     end
   end
-
+end
   # PUT /items/1
   # PUT /items/1.json
   def update

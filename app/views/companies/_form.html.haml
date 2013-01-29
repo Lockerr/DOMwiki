@@ -28,8 +28,11 @@
       .row-fluid
         .span5.offset1#company_brands_selector
           = text_field_tag 'brands_selector',nil, {placeholder: :brands, data: {provide: :typeahead, source: Brand.all.map(&:name), model: :company}, autocomplete: :off}
+          = render partial: 'brands/brand.html.haml', collection: @company.brands, locals: {object: :company, width: 220, style: 'margin-left: 0px;'}
         .span5.offset1
           = text_field_tag 'categories_selector',nil, {placeholder: :categories, data: {provide: :typeahead, source: Category.all.map(&:name), model: :category}, autocomplete: :off}
+          - for category in @company.categories
+            %p= category.name
   .row
     .form-horizontal
       .span4
@@ -46,7 +49,7 @@
       
           
 
-  = f.submit class: :btn
+  = f.submit class: 'btn btn-primary', style: 'position: fixed; right: 10px; top: 50px'
   = link_to 'Cancel', '#'
 
 %br/

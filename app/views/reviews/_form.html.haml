@@ -29,10 +29,8 @@
       .span4#items_selector
         .controls
           .input-append
-    
             = text_field_tag :review_items_typeahead, '', data: {provide: :typeahead, source: Item.select([:name]).map(&:name)} , autocomplete: :off, :placeholder => "Search..."
-            
-            
+
 
             %span.add-on
               %i.icon-search
@@ -40,12 +38,9 @@
       .span4
         = link_to 'view attachable file: Example.xls', 'view attachable file'
   .row{style: 'margin-top: 10px;'}
-    
     %ul.thumbnails
       - @review.items.each do |item|
         %li.span3.alert.alert-info{style: 'width: 226px;'}
-          
-          
           %button.close{'data-dismiss' => 'alert', data: {object: 'Item', id: item.id}} &times;
           = item.name
   .row

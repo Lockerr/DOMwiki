@@ -16,7 +16,7 @@ gem 'quiet_assets'
 gem 'haml-rails'
 gem 'russian'
 gem 'mercury-rails'
-gem 'thin'
+# gem 'thin'
 gem 'less-rails'
 gem 'therubyracer'
 gem 'bootstrap-datepicker-rails'
@@ -50,10 +50,13 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'ruby-prof'
   gem 'minitest'
+  
   gem 'database_cleaner'
 end
 
 group :development do
+  gem 'meta_request'
+  gem "better_errors"
   gem 'autotest'
   gem 'fuubar'
   gem 'fuubar-cucumber'
