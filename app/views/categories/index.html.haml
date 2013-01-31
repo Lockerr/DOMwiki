@@ -10,8 +10,11 @@
               .span1
                 = category.id
               .span5
-                
+
                 = category.name
+
+                
+
                 %a.btn.btn-mini{href: edit_category_path(category)}
                   %i.icon-edit
                 %a.btn.btn-mini.btn-success{href: new_category_category_path(category)}
@@ -61,6 +64,10 @@
                                   = subcategory.id
                                 .span4
                                   = subcategory.name
+
+                                  %a.btn.btn-mini{href: category_path(subcategory)}
+                                    %i.icon-search
+
                                   %a.btn.btn-mini{href: edit_category_path(subcategory)}
                                     %i.icon-edit
                                   %a.btn.btn-mini.btn-danger{href: category_path(subcategory), :data => {:method => :delete, :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }}
