@@ -26,7 +26,6 @@
           %legend
             Assessment
             = assessment.id
-            
           = f.fields_for :assessments, assessment do |nest|
             = nest.hidden_field :id
             = nest.text_field :name, class: :span3
@@ -39,12 +38,9 @@
         .control-group
           .controls
             = text_field_tag 'brands_selector',nil, {placeholder: 'Choose brand', data: {provide: :typeahead, source: Brand.all.map(&:name), model: :category}, autocomplete: :off}
-          
       .span9#category_brands_selector
         .row-fluid
           = render partial: '/brands/brand', collection: @category.brands, locals: {object: :category}
-
-
     %hr
     .row
       - @mistakes.each do |mistake|
