@@ -1,7 +1,7 @@
 .row
   %legend
     %h1
-      = @category.parent.name
+      = @category.parent.try(:name)
       \- 
       = @category.name
 .container
