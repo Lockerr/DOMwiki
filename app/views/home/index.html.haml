@@ -1,31 +1,22 @@
 .container.categories{:style => 'text-align: center'}
-  - for category in Category.where(:parent_id => nil)
+  - for category in @categories
     .row
       %h1
         = t("#{category.class.to_s}.#{category.name}")
     .row
       %ul.thumbnails
-        - for subcategory in category.children
+        - for subcategory in category.children.public
           %li.span3
             .thumbnail
               .row-fluid
                 .span3
                   .well.well-small{style: 'margin-bottom: 0px;'}
                     %p &nbsp;
-                    
-                    
                 .span9
                   .caption
                     %h4= t("#{category.class.to_s}.#{category.name}.#{subcategory.name}")
                     .row-fluid
-                      - for subsub in subcategory.children
+                      - for subsub in subcategory.children.public
                         .span4
                           %small
                             = link_to t("#{category.class.to_s}.#{category.name}.#{subcategory.name}.#{subsub.name}"), category_path(subsub)
-                            
-
-
-
-
-
-

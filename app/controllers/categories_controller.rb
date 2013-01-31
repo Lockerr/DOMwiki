@@ -51,12 +51,10 @@ class CategoriesController < ApplicationController
         @assessments << Assessment.new(:category_id => @category.id) 
       }
 
-      
-
       @brands = @category.brands
-      
+
       @mistakes = @category.mistakes
-      
+
       (4 - @mistakes.size).times do
         @mistakes << Mistake.new(:category_id => @category.id)
       end

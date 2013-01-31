@@ -1,4 +1,6 @@
-.alert.span3.alert-info.brand{style: "#{style}margin-bottom: 5px; width: #{width || 200}px", id: brand.id}
+- style ||= nil
+- width ||= nil
+.alert.span3.alert-info.brand{style: "#{style || nil}margin-bottom: 5px; width: #{width || 200}px", id: brand.id}
   %button.close{type: :button, data:{dismiss: :alert}}
     &times;
   = brand.name

@@ -28,7 +28,7 @@
                 %li.span3.thumbnail
                   %h4= assessment.name.presence || 'lorem'
                   %br/
-                  = assessment.description.presence || t('lorem')[0..rand(50)+50]
+                  = assessment.description.presence ? assessment.description.html_safe : t('lorem')[0..rand(50)+50]
       %hr/
       .row-fluid
         .span3

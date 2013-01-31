@@ -7,6 +7,8 @@ gem 'rails', '3.2.11'
 
 gem 'nested_set'
 
+gem 'devise'
+
 gem 'hirb'
 gem 'capistrano'
 gem 'mysql2'
@@ -16,7 +18,7 @@ gem 'quiet_assets'
 gem 'haml-rails'
 gem 'russian'
 gem 'mercury-rails'
-# gem 'thin'
+gem 'thin'
 gem 'less-rails'
 gem 'therubyracer'
 gem 'bootstrap-datepicker-rails'
@@ -50,7 +52,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'ruby-prof'
   gem 'minitest'
-  
+
   gem 'database_cleaner'
 end
 

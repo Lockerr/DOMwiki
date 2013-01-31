@@ -1,6 +1,6 @@
 class Category < ActiveRecord::Base
-  attr_accessible :name, :rubric_id, :parent_id, :description, :assessments_attributes, :mistakes_attributes, :brand_ids
-  
+  attr_accessible :name, :rubric_id, :parent_id, :description, :assessments_attributes, :mistakes_attributes, :brand_ids, :published
+
   has_and_belongs_to_many :models
   has_and_belongs_to_many :brands
   has_and_belongs_to_many :reviews
@@ -10,11 +10,13 @@ class Category < ActiveRecord::Base
   has_many :assessments
   has_many :mistakes
 
+  after_update :publish_parents
+
   accepts_nested_attributes_for :assessments
   accepts_nested_attributes_for :mistakes
-  
 
-  acts_as_nested_set  
+  scope :public, where(published: true)
+  acts_as_nested_set
 
   def assessments_attributes=(attributes)
     attributes.each do |key, value|
@@ -28,5 +30,15 @@ class Category < ActiveRecord::Base
     end
   end
 
-
+  def publish_parents
+    if published
+      if parent
+        parent.update_attributes published: true
+      end
+    else
+      unless parent.children.public.any?
+        parent.update_attributes published: false
+      end
+    end
+  end
 end

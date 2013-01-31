@@ -1,5 +1,7 @@
 Build::Application.routes.draw do
   
+  devise_for :users
+
   resources :offers
   resources :items
   resources :countries

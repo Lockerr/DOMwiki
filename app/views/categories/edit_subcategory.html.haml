@@ -2,8 +2,13 @@
   %legend
     Edit subcategory
   = form_for @category do |f|
-    
+
     .form-horizontal
+      .control-group
+        %label.control-label
+          Publish
+        .controls
+          = f.check_box :published
       .control-group
         %label.control-label
           Name
