@@ -35,10 +35,10 @@ class Category < ActiveRecord::Base
       if parent
         parent.update_attributes published: true
       end
-    else
-      unless parent.children.public.any?
-        parent.update_attributes published: false
-      end
+    # else
+    #   unless parent.children.public.any?
+    #     parent.update_attributes published: false
+    #   end
     end
   end
 end
