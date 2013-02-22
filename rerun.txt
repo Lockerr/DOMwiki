@@ -1,1 +1,0 @@
-features/brands/sign_in.feature:6 features/brands/sign_in.feature:12 features/brands/sign_in.feature:20 features/brands/sign_in.feature:27 features/brands/sign_out.feature:6 features/brands/sign_up.feature:9 features/brands/user_edit.feature:6

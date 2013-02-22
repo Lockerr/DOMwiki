@@ -22,9 +22,4 @@ class Brand < ActiveRecord::Base
   def country_name
     country.try :name
   end
-
-  def categories_attributes=(attributes)
-    # raise attributes['0'].inspect
-    self.category_ids=attributes['0']['category_ids']
-  end
 end

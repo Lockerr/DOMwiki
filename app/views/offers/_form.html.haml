@@ -5,7 +5,7 @@
         .control-group
           = f.label :company, class: 'control-label'
           .controls
-            = f.select :company_id, Company.all.map{|i| [i.id, i.name]}
+            = f.select :company_id, Company.all.map{|i| [i.name, i.id]}
         .control-group
           = f.label :date_start, class: 'control-label'
           .controls
@@ -38,7 +38,7 @@
 
           = text_field_tag :offer_brands_name, '', data: {provide: :typeahead, source: Brand.all.map(&:name)}, autocomplete: :off
       - @offer.brands.each do |brand|
-        = render brand
+        = render brand, object: @offer
     .span3#items_selector
       %legend
         Items
@@ -48,7 +48,7 @@
 
           = text_field_tag :offer_items_typeahead, '', data: {provide: :typeahead, source: []} , autocomplete: :off
       - @offer.items.each do |item|
-        = render item
+        = render item, object: @item
 
   .row
     

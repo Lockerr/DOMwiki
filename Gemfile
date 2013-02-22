@@ -47,41 +47,31 @@ gem 'paperclip'
 gem 'rb-inotify', '~> 0.8.8'
 
 group :development, :test do
-  
+  gem 'spork-rails'
   gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'guard-spork'
   gem 'factory_girl_rails'
   gem 'ruby-prof'
   gem 'minitest'
-
   gem 'database_cleaner'
 end
 
 group :development do
   gem 'meta_request'
   gem "better_errors"
-  gem 'autotest'
-  gem 'fuubar'
-  gem 'fuubar-cucumber'
   gem 'hpricot'
 end
 
 group :test do
   gem 'turn'
-  gem 'spork-rails'
-  gem 'guard-rspec'
-  gem 'cucumber'
-  gem 'cucumber-rails', :require => false
-  gem 'guard-cucumber'
-  gem 'database_cleaner'
   gem 'rb-fsevent'
   gem 'growl'
-  gem 'guard-spork'
   gem 'launchy'
   gem 'email_spec'
   gem 'capybara'
   gem 'ZenTest', '4.4.1'
   gem 'rb-notifu'
-
 end
 
 gem 'rvm-capistrano'

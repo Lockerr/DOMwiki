@@ -96,7 +96,7 @@
     .span3
       What planning to do next:
     .span2
-      = f.text_field :planning
+      = f.select :planning, %w(first second third), include_blank: true
     .span3.offset1
       When:
     

@@ -18,8 +18,9 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
-    if params[:category_name]
-      @category = Category.find_by_name params[:category_name]
+    if names = params[:categories]
+      name = names.split('/').last
+      @category = Category.find_by_name name
     else
       @category = Category.find(params[:id])
     end
