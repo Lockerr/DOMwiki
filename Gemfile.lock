@@ -285,7 +285,7 @@ DEPENDENCIES
   bootstrap-datepicker-rails
   capistrano
   capybara
-  coffee-rails (~> 3.2.1)
+  coffee-rails
   database_cleaner
   devise
   email_spec

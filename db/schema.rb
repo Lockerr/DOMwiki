@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(:version => 20130131041142) do
     t.string   "name"
     t.text     "description"
     t.integer  "country_id"
+    t.date     "foundation"
+    t.boolean  "public"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -118,8 +120,12 @@ ActiveRecord::Schema.define(:version => 20130131041142) do
     t.text     "description"
     t.integer  "employers"
     t.boolean  "published"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.decimal  "speed_rating",       :precision => 10, :scale => 0
+    t.decimal  "quality_rating",     :precision => 10, :scale => 0
+    t.decimal  "price_rating",       :precision => 10, :scale => 0
+    t.decimal  "response",           :precision => 10, :scale => 0
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
   end
 
   create_table "countries", :force => true do |t|
@@ -255,13 +261,6 @@ ActiveRecord::Schema.define(:version => 20130131041142) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "subcategories", :force => true do |t|
-    t.string   "name"
-    t.integer  "category_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|
