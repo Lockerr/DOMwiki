@@ -4,6 +4,5 @@ log/*.log
 tmp/
 .sass-cache/
 .idea/
-.idea/*.xml
 public/system/
 public/assets/
