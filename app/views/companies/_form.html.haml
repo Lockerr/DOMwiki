@@ -4,35 +4,119 @@
       .form-horizontal
         .control-group
           %lablel.control-label
-            Company
+            = Company.human_attribute_name :name
           .controls
             = f.text_field :name
         .control-group
           %lablel.control-label
-            Foundation
+            = Company.human_attribute_name :foundation
           .controls
             = f.text_field :foundation, class: :datepicker
         .control-group
           %lablel.control-label
-            Employers
+            = Company.human_attribute_name :employers
           .controls
             = f.text_field :employers
         .control-group
           %label.control-label
-            Slogan
+            = Company.human_attribute_name :slogan
           .controls
             = f.text_field :slogan
         .control-group
           %label.control-label
-            SWAT
+            = Company.human_attribute_name :swat
           .controls
             = f.text_area :swat, rows: 5
+        %hr/
+        %legend
+          = (Company.human_attribute_name :ceo).upcase
+        .control-group
+
+          %label.control-label
+            = Company.human_attribute_name :ceo_since
+          .controls
+            = f.text_field :ceo_since, class: :datepicker
+        .control-group
+          .controls
+            = f.text_area :ceo_description, rows: 5
+        .control-group
+          .controls
+            = link_to t('links.upload'), '#'
+        .control-group
+          .controls
+            %img{data: {src: 'holder.js/120x120'}}
+        .control-group
+          .controls
+            = link_to t('links.email'), '#'
+        %legend
+          = (Company.human_attribute_name :cto).upcase
+        .control-group
+
+          %label.control-label
+            = Company.human_attribute_name :cto_since
+          .controls
+            = f.text_field :cto_since, class: :datepicker
+        .control-group
+          .controls
+            = f.text_area :cto_description, rows: 5
+        .control-group
+          .controls
+            = link_to t('links.upload'), '#'
+        .control-group
+          .controls
+            %img{data: {src: 'holder.js/120x120'}}
+        .control-group
+          .controls
+            = link_to t('links.email'), '#'
+
+        %legend
+          = (Company.human_attribute_name :sales).upcase
+        .control-group
+
+          %label.control-label
+            = Company.human_attribute_name :sales_since
+          .controls
+            = f.text_field :sales_since, class: :datepicker
+        .control-group
+          .controls
+            = f.text_area :sales_description, rows: 5
+        .control-group
+          .controls
+            = link_to t('links.upload'), '#'
+        .control-group
+          .controls
+            %img{data: {src: 'holder.js/120x120'}}
+        .control-group
+          .controls
+            = link_to t('links.email'), '#'
+
+        %legend
+          = (Company.human_attribute_name :fourth).upcase
+        .control-group
+
+          %label.control-label
+            = Company.human_attribute_name :fourth_since
+          .controls
+            = f.text_field :fourth_since, class: :datepicker
+        .control-group
+          .controls
+            = f.text_area :fourth_description, rows: 5
+        .control-group
+          .controls
+            = link_to t('links.upload'), '#'
+        .control-group
+          .controls
+            %img{data: {src: 'holder.js/120x120'}}
+        .control-group
+          .controls
+            = link_to t('links.email'), '#'
+
     .span8
       .row-fluid
         .span12
           .form-horizontal
             %label.control-label
-              Published
+              = Company.human_attribute_name :published
             .controls
               = f.check_box :published 
       .row-fluid
@@ -43,15 +127,51 @@
           = text_field_tag 'company_category_name',nil, {placeholder: :categories, data: {provide: :typeahead, source: Category.all.map(&:name), model: :category}, autocomplete: :off}
           = render partial: 'categories/category.html.haml', collection: @company.categories, locals: {object: :company, width: 220, style: 'margin-left: 0px;'}
 
+  %hr/
+  .row-fluid
+    .span6
+      .row
+        .span5
+          %h3
+            office1
+          %br/
+          phone
+          %br/
+          address
+          %br/
+          direction
+        .span7
+          %img{data: {src: 'holder.js/420x160'}}
+      .row{style: 'margin-top: 5px'}
+        .span12
+          .controls
+            = text_area_tag 'asd', 'asd', rows: 5, class: :span12
+    .span6
+      .row
+        .span5
+          %h3
+            office1
+          %br/
+          phone
+          %br/
+          address
+          %br/
+          direction
+        .span7
+          %img{data: {src: 'holder.js/420x160'}}
+      .row{style: 'margin-top: 5px'}
+        .span12
+          .controls
+            = text_area_tag 'asd', 'asd', rows: 5, class: :span12
+
 
       
           
 
   = f.submit class: 'btn btn-primary', style: 'position: fixed; right: 10px; top: 50px'
-  = link_to 'Cancel', '#'
+  = link_to t('helpers.links.cancel'), '#'
 
 %br/
-= controller_name.singularize
 
 
   

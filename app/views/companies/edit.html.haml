@@ -1,8 +1,8 @@
 #object{data: {id: @company.id}}
-%h1 Editing company
+%legend Editing company
 
 = render 'form'
 
-= link_to 'Show', @company
+= link_to t(:show, scope: [:helpers, :links]), @company
 \|
-= link_to 'Back', companies_path
+= link_to t(:back, scope: [:helpers, :links]), companies_path

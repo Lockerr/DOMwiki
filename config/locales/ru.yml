@@ -2,18 +2,85 @@ ru:
   lorem: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   activerecord:
     attributes:
-      model:
-        name: Имя
-        brand_id: Производитель
-        description: Описание
-        price: Цена
-        created_at: Создано
+      company:
+        slogan:
+        name:
+        foundation:
+        employers:
+        swat:
+        published:
+        employers:
+        ceo:
+        ceo_since:
+        cto:
+        cto_since:
+        cto_description:
+        sales:
+        sales_since:
+        sales_description:
+        fourth:
+        fourth_since:
+        fourth_description:
+        name:
+        foundation:
+        slogan:
+        swat:
+        description:
+        employers:
+        published:
+        created_at:
+      offer:
+        publish:
+        header:
+        advert:
+        date_start:
+        date_end:
+        conditions:
+      review:
+        publish:
+        name:
+        phone:
+        place:
+        square:
+        total_sum:
+        date1:
+        date2:
+        csi_id:
+        speed:
+        quality:
+        price:
+        response:
+        recommend:
+        planning:
+        planning_time:
+        accept_offers:
+        created_at:
+        updated_at:
+        speed_description:
+        quality_description:
+        price_description:
+        response_description:
+      item:
+        name:
+        description:
+        price_from:
+        price_to:
+        brand_id:
+        partnumber:
+      brand:
+        name:
+        description:
+      category:
+        name:
+        description:
   helpers:
-    actions: Действия
+    actions:
     links:
-      new: Создать
-      cancel: Отменить
-      edit: Редактировать
-      destroy: Удалить
-      back: Назад
+      new:
+      cancel:
+      edit:
+      destroy:
+      back:
 
+  links:
+    lead_form_link: "new lead form"

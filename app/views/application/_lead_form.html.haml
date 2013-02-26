@@ -1,0 +1,14 @@
+.modal.hide.fade
+  .modal-header
+    %h3
+      = t('lead form')
+  .modal-body
+    .row-fluid
+      .span6
+        = t('lead text')
+      .span6
+        = text_field_tag 'lead', '', placeholder: '+7 (xxx) xxx-xx-xx'
+  .modal-footer
+    footer
+
+

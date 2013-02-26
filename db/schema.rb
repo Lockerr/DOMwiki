@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226082957) do
+ActiveRecord::Schema.define(:version => 20130226115924) do
 
   create_table "assessments", :force => true do |t|
     t.integer  "category_id"
@@ -108,7 +108,7 @@ ActiveRecord::Schema.define(:version => 20130226082957) do
     t.string   "cto_since"
     t.text     "cto_description"
     t.string   "sales"
-    t.string   "sale_since"
+    t.string   "sales_since"
     t.text     "sales_description"
     t.string   "fourth"
     t.string   "fourth_since"

@@ -113,7 +113,9 @@
       To who:
     
       %a{:href => '#'}
-        New lead form
+        = t('lead_form_link')
+
+
 
   .row
     .span3
@@ -135,4 +137,3 @@
         = f.radio_button :accept_offers, false
         %label.radio No
   = render partial: 'categories_selector', locals: {form: f, object: @review}
-  
