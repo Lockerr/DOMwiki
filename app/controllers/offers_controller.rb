@@ -1,6 +1,51 @@
 class OffersController < ApplicationController
   # GET /offers
   # GET /offers.json
+  def brands
+    if request.put?
+      @offer = Offer.find(params[:id])
+      @brand = Brand.find_by_name(params[:brand_name])
+      if @brand
+        unless @offer.brand_ids.include? @brand.id
+          @offer.brands << @brand
+          render partial: @brand, locals: {object: :offer}
+        else
+          render text: 'exist', status: :unprocessable_entity
+        end
+      else
+        render :nothing
+      end
+
+    elsif request.delete?
+      @offer = Offer.find(params[:id])
+      @brand = Brand.find(params[:brand_id])
+      @offer.brands.delete(@brand)
+      render text: :ok, status: :ok
+    end
+  end
+
+  def items
+    if request.put?
+      @offer = Offer.find(params[:id])
+      @item = Item.find_by_name(params[:item_name].scan(/(\[.+\])\s+?(.+)/)[0][1])
+      if @item
+        unless @offer.item_ids.include? @item.id
+          @offer.items << @item
+          render partial: @item, locals: {object: :offer}
+        else
+          render text: 'exist', status: :unprocessable_entity
+        end
+      else
+        render nothing: true
+      end
+    elsif request.delete?
+      @offer = Offer.find(params[:id])
+      @item = Item.find(params[:item_id])
+      @offer.items.delete(@item)
+      render text: :ok, status: :ok
+    end
+  end
+
   def index
     @offers = Offer.all
 

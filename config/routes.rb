@@ -8,14 +8,26 @@ Build::Application.routes.draw do
 
   devise_for :users
 
-  resources :offers
+  resources :offers do
+    member do
+      put :brands
+      delete :brands
+      put :items
+      delete :items
+    end
+  end
+
   resources :items
   resources :countries
   resources :mistakes
   resources :assessments
   resources :csis
+
   resources :reviews do
-    resources :items
+    member do
+      put :items
+      delete :items
+    end
   end
 
 
@@ -29,13 +41,20 @@ Build::Application.routes.draw do
     member { put :mercury_update }
   end
   
-  resources :companies
+  resources :companies do
+    member do
+      put :brands
+      delete :brands
+      put :categories
+      delete :categories
+    end
+  end
 
     namespace :mercury do
       resources :images
     end
 
-  mount Mercury::Engine => '/'
+  #mount Mercury::Engine => '/'
   
   resources :categories do
     resources :categories

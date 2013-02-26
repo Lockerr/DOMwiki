@@ -1,5 +1,5 @@
 .alert.item.alert-info{style: 'margin-bottom: 5px;', :id => item.id}
-  %button.close{type: :button, data:{dismiss: :alert}}
+  %button.close{type: :button, data:{dismiss: :alert, id: item.id}}
     &times;
   = item.name
   %input{id: "#{object}_item_ids_#{item.id}", name: "#{object}[item_ids][]", value: item.id, type: :hidden}

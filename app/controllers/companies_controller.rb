@@ -1,6 +1,52 @@
 class CompaniesController < ApplicationController
   # GET /companies
   # GET /companies.json
+
+  def brands
+    if request.put?
+      @company = Company.find(params[:id])
+      @brand = Brand.find_by_name(params[:brand_name])
+      if @brand
+        unless @company.brand_ids.include? @brand.id
+          @company.brands << @brand
+          render partial: @brand, locals: {object: :offer}
+        else
+          render text: 'exist', status: :unprocessable_entity
+        end
+      else
+        render :nothing
+      end
+
+    elsif request.delete?
+      @company = Company.find(params[:id])
+      @brand = Brand.find(params[:brand_id])
+      @offer.brands.delete(@brand)
+      render text: :ok, status: :ok
+    end
+  end
+
+  def categories
+    if request.put?
+      @company = Company.find(params[:id])
+      @category = Category.find_by_name(params[:category_name])
+      if @category
+        unless @company.category_ids.include? @category.id
+          @company.categories << @category
+          render partial: @category, locals: {object: :offer}
+        else
+          render text: 'exist', status: :unprocessable_entity
+        end
+      else
+        render nothing: true
+      end
+    elsif request.delete?
+      @company = Company.find(params[:id])
+      @category = Category.find(params[:category_id])
+      @company.categories.delete(@category)
+      render text: :ok, status: :ok
+    end
+  end
+
   def index
     @companies = Company.all
 

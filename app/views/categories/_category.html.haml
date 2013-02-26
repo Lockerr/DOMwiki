@@ -1,0 +1,8 @@
+- style ||= nil
+- width ||= nil
+.alert.span3.alert-info.category{style: "#{style || nil}margin-bottom: 5px; width: #{width || 200}px", id: category.id}
+  %button.close{type: :button, data:{dismiss: :alert, id: category.id}}
+    &times;
+  = category.name
+  %input{id: "#{object}_category_ids_#{category.id}", name: "#{object}[category_ids][]", value: category.id, type: :hidden}
+ 

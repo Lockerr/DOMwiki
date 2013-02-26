@@ -1,10 +1,13 @@
 class Offer < ActiveRecord::Base
   attr_accessible :advert, :company_id, :conditions, :date_end, :date_start, :header, :publish, :brand_ids, :category_ids, :item_ids
 
-  has_and_belongs_to_many :items
-  has_and_belongs_to_many :models
-  has_and_belongs_to_many :brands
-  has_and_belongs_to_many :categories
+
+
+  has_and_belongs_to_many :items, uniq: true
+  has_and_belongs_to_many :models, uniq: true
+  has_and_belongs_to_many :brands, uniq: true
+  has_and_belongs_to_many :categories, uniq: true
+
   belongs_to :company
 
   def brand_name=(name)
@@ -15,7 +18,7 @@ class Offer < ActiveRecord::Base
     brands.first.name if brands.any?
   end
     
- 
+
   
 
 

@@ -5,7 +5,7 @@ class Brand < ActiveRecord::Base
   belongs_to :country
 
   has_and_belongs_to_many :categories
-  has_and_belongs_to_many :offers
+  has_and_belongs_to_many :offers, uniq: true
   has_and_belongs_to_many :companies
 
   has_many :items

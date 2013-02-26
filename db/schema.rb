@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130131041142) do
+ActiveRecord::Schema.define(:version => 20130226082957) do
 
   create_table "assessments", :force => true do |t|
     t.integer  "category_id"
@@ -26,8 +26,6 @@ ActiveRecord::Schema.define(:version => 20130131041142) do
     t.string   "name"
     t.text     "description"
     t.integer  "country_id"
-    t.date     "foundation"
-    t.boolean  "public"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -48,6 +46,8 @@ ActiveRecord::Schema.define(:version => 20130131041142) do
     t.integer "offer_id"
     t.integer "brand_id"
   end
+
+  add_index "brands_offers", ["offer_id", "brand_id"], :name => "index_brands_offers_on_offer_id_and_brand_id"
 
   create_table "brands_rubrics", :force => true do |t|
     t.integer "brand_id"
@@ -120,12 +120,8 @@ ActiveRecord::Schema.define(:version => 20130131041142) do
     t.text     "description"
     t.integer  "employers"
     t.boolean  "published"
-    t.decimal  "speed_rating",       :precision => 10, :scale => 0
-    t.decimal  "quality_rating",     :precision => 10, :scale => 0
-    t.decimal  "price_rating",       :precision => 10, :scale => 0
-    t.decimal  "response",           :precision => 10, :scale => 0
-    t.datetime "created_at",                                        :null => false
-    t.datetime "updated_at",                                        :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
   end
 
   create_table "countries", :force => true do |t|
@@ -255,12 +251,20 @@ ActiveRecord::Schema.define(:version => 20130131041142) do
     t.text     "quality_description"
     t.text     "price_description"
     t.text     "response_description"
+    t.integer  "company_id"
   end
 
   create_table "rubrics", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "subcategories", :force => true do |t|
+    t.string   "name"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|

@@ -1,6 +1,28 @@
 class ReviewsController < ApplicationController
   # GET /reviews
   # GET /reviews.json
+  def items
+    if request.put?
+      @review = Review.find(params[:id])
+      @item = Item.find_by_name(params[:item_name].scan(/(\[.+\])\s+?(.+)/)[0][1])
+      if @item
+        unless @review.item_ids.include? @item.id
+          @review.items << @item
+          render partial: @item, locals: {object: :offer}
+        else
+          render text: 'exist', status: :unprocessable_entity
+        end
+      else
+        render nothing: true
+      end
+    elsif request.delete?
+      @review = Review.find(params[:id])
+      @item = Item.find(params[:item_id])
+      @review.items.delete(@item)
+      render text: :ok, status: :ok
+    end
+  end
+
   def index
     @reviews = Review.all
 
@@ -62,6 +84,7 @@ class ReviewsController < ApplicationController
       if @review.update_attributes(params[:review])
         format.html { redirect_to @review, notice: 'Review was successfully updated.' }
         format.json { head :no_content }
+        format.js {render nothing: true}
       else
         format.html { render action: "edit" }
         format.json { render json: @review.errors, status: :unprocessable_entity }

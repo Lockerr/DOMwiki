@@ -3,8 +3,13 @@ class Company < ActiveRecord::Base
 
   validates_presence_of :name
 
+  has_many :reviews
   has_many :offers
+
   has_and_belongs_to_many :brands
-  belongs_to :country
   has_and_belongs_to_many :categories
+
+  belongs_to :country
+
+
 end

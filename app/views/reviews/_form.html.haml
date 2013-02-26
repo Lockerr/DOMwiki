@@ -1,5 +1,8 @@
 = form_for @review do |f|
-  
+  %legend
+    = t('company')
+  = f.text_field :company_name, data: {provide: :typeahead, source: Company.all.map(&:name)} , autocomplete: :off, :placeholder => "Search..."
+
     
   .row
     .span3
@@ -29,7 +32,7 @@
       .span4#items_selector
         .controls
           .input-append
-            = text_field_tag :review_items_typeahead, '', data: {provide: :typeahead, source: Item.select([:name]).map(&:name)} , autocomplete: :off, :placeholder => "Search..."
+            = text_field_tag :review_items_typeahead, '', data: {provide: :typeahead, source: Item.all.map{|i| "[#{i.brand.name}] #{i.name}"}} , autocomplete: :off, :placeholder => "Search..."
 
 
             %span.add-on
@@ -49,7 +52,13 @@
     .span3
       .row-fluid
         .span8 Speed
-        .span4= stars(3)
+        .span4
+          - @review.speed.to_i.times do |i|
+            = link_to glyph(:star), review_path(@review, review: {:speed => i + 1}), remote: true, method: :put
+
+          - (5 - @review.speed.to_i).times do |i|
+            = link_to glyph(:star_empty), review_path(@review, review: {:speed => i + @review.speed.to_i+ 1}), remote: true, method: :put
+
       .row-fluid
         = f.text_area :speed_description, class: :span12, rows: 4
         
@@ -57,7 +66,11 @@
     .span3
       .row-fluid
         .span8 Quality
-        .span4= stars(0)
+        - @review.quality.to_i.times do |i|
+          = link_to glyph(:star), review_path(@review, review: {:quality => i + 1}), remote: true, method: :put
+
+        - (5 - @review.quality.to_i).times do |i|
+          = link_to glyph(:star_empty), review_path(@review, review: {:quality => i + @review.quality.to_i+ 1}), remote: true, method: :put
       .row-fluid
         = f.text_area :quality_description, class: :span12, rows: 4
         
@@ -65,7 +78,12 @@
     .span3
       .row-fluid
         .span8 Price
-        .span4= stars(1)
+        - @review.price.to_i.times do |i|
+          = link_to glyph(:star), review_path(@review, review: {:price => i + 1}), remote: true, method: :put
+
+        - (5 - @review.price.to_i).times do |i|
+          = link_to glyph(:star_empty), review_path(@review, review: {:price => i + @review.price.to_i+ 1}), remote: true, method: :put
+
       .row-fluid
         = f.text_area :price_description, class: :span12, rows: 4
 
@@ -73,7 +91,12 @@
     .span3
       .row-fluid
         .span8 Response
-        .span4= stars(4)
+        - @review.response.to_i.times do |i|
+          = link_to glyph(:star), review_path(@review, review: {:response => i + 1}), remote: true, method: :put
+
+        - (5 - @review.response.to_i).times do |i|
+          = link_to glyph(:star_empty), review_path(@review, review: {:response => i + @review.response.to_i+ 1}), remote: true, method: :put
+
       .row-fluid
         = f.text_area :response_description, class: :span12, rows: 4
 

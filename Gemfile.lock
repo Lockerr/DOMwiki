@@ -153,6 +153,17 @@ GEM
     net-ssh-gateway (1.1.0)
       net-ssh (>= 1.99.1)
     nokogiri (1.5.6)
+    opal (0.3.40)
+      sprockets
+    opal-jquery (0.0.7)
+      opal (~> 0.3.39)
+    opal-rails (0.3.5)
+      jquery-rails
+      opal (~> 0.3.36)
+      opal-jquery (>= 0.0.5)
+      opal-spec (>= 0.2.8)
+      rails (~> 3.2.0)
+    opal-spec (0.2.13)
     orm_adapter (0.4.0)
     paperclip (3.4.0)
       activemodel (>= 3.0.0)
@@ -231,6 +242,9 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
+    sextant (0.2.3)
+      activesupport (>= 3.2)
+      rails (>= 3.2)
     slop (3.4.3)
     spork (1.0.0rc3)
     spork-rails (3.2.1)
@@ -258,7 +272,7 @@ GEM
       sprockets (>= 2.0.0)
     turn (0.9.6)
       ansi
-    twitter-bootstrap-rails (2.2.0)
+    twitter-bootstrap-rails (2.2.4)
       actionpack (>= 3.1)
       execjs
       railties (>= 3.1)
@@ -304,6 +318,8 @@ DEPENDENCIES
   minitest
   mysql2
   nested_set
+  opal-jquery
+  opal-rails
   paperclip
   quiet_assets
   rails (= 3.2.11)
@@ -315,6 +331,7 @@ DEPENDENCIES
   russian
   rvm-capistrano
   sass-rails (~> 3.2.3)
+  sextant
   spork-rails
   therubyracer
   thin

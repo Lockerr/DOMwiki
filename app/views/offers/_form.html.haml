@@ -46,7 +46,7 @@
         = f.label :items, class: 'control-label'
         .controls
 
-          = text_field_tag :offer_items_typeahead, '', data: {provide: :typeahead, source: []} , autocomplete: :off
+          = text_field_tag :offer_items_typeahead, '', data: {provide: :typeahead, source: Item.all.map{|i| "[#{i.brand.name}] #{i.name}"}} , autocomplete: :off
       - @offer.items.each do |item|
         = render item, object: @item
 
