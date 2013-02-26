@@ -7,7 +7,7 @@ class Review < ActiveRecord::Base
   belongs_to :company
 
   def company_name
-    company.name
+    company.try(&:name)
   end
 
   def company_name=(name)
