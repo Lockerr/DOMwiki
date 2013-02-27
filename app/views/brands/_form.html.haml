@@ -1,6 +1,15 @@
 = form_for @brand do |f|
   .form.form-horizontal
     .control-group
+      .controls
+        - if @brand.photo.try(:url)
+          = image_tag @brand.photo.url, size: '200x200'
+        - else
+          %img{data: {src: 'holder.js/190x190'}}
+      .controls
+        = f.file_field :photo_data
+
+    .control-group
       = f.label :name, class: 'control-label'
       .controls
         = f.text_field :name, class: :span6

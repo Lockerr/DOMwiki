@@ -105,26 +105,5 @@ $ ->
       type: 'delete'
       url: "/companies/#{object_id}/categories?category_id=#{$(@).data('id')}"
 
-  ###################
-#
-#  $('#review_items_typeahead').live 'change', ->
-#    value = @.value if ($(@).data('typeahead').source.indexOf(@.value) >= 0)
-#    if value
-#      $.ajax
-#        url: "/items/1.js?item_name=#{value}"
-#
-#
-#  $('#brands_selector').live 'change', ->
-#    value = @.value if ($(@).data('typeahead').source.indexOf(@.value) >= 0)
-#    if value
-#      $.ajax
-#        url: "/brands/1.js?brand_name=#{value}&object=#{$(@).data('model')}"
-#
-#  $('#categories_selector').live 'change', ->
-#    value = @.value if ($(@).data('typeahead').source.indexOf(@.value) >= 0)
-#    if value
-#      $.ajax
-#        url: "/categories/1.js?category_name=#{value}"
-#
-#  $("#item_brand_name").live 'change', ->
-#    console.log @.value if ($(@).data('source').indexOf(@.value) >= 0)
+  $('.admin_lead_form').click ->
+    $('.admin_lead.modal').modal('show')

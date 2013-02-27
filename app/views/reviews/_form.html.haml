@@ -28,16 +28,23 @@
     %legend
       Items
   .row
+    = f.file_field :photo_data, multiple: :multiple
+    %ul.thumbnails
+      - @review.photos.each do |photo|
+        %li.span2
+          %a.thumbnail
+            %img{src: photo.url}
+
+
+
+  .row
     .form.form-inline
-      .span4#items_selector
+      .span3#items_selector
         .controls
           .input-append
             = text_field_tag :review_items_typeahead, '', data: {provide: :typeahead, source: Item.all.map{|i| "[#{i.brand.name}] #{i.name}"}} , autocomplete: :off, :placeholder => "Search..."
-
-
             %span.add-on
-              %i.icon-search
-
+              = glyph(:search)
       .span4
         = link_to 'view attachable file: Example.xls', 'view attachable file'
   .row{style: 'margin-top: 10px;'}
@@ -46,6 +53,9 @@
         %li.span3.alert.alert-info{style: 'width: 226px;'}
           %button.close{'data-dismiss' => 'alert', data: {object: 'Item', id: item.id}} &times;
           = item.name
+  .row
+    %legend Photos
+
   .row
     %legend CSI
   .row
@@ -112,7 +122,7 @@
     .span3.offset1
       To who:
     
-      %a{:href => '#'}
+      %a.admin_lead_form{:href => '#'}
         = t('lead_form_link')
 
 

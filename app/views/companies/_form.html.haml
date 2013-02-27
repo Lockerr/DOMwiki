@@ -41,10 +41,13 @@
             = f.text_area :ceo_description, rows: 5
         .control-group
           .controls
-            = link_to t('links.upload'), '#'
+            = f.file_field :ceo_photo_data
         .control-group
           .controls
-            %img{data: {src: 'holder.js/120x120'}}
+            - if @company.ceo_photo.try(:url)
+              = image_tag @company.ceo_photo.url
+            - else
+              %img{data: {src: 'holder.js/190x190'}}
         .control-group
           .controls
             = link_to t('links.email'), '#'
@@ -61,10 +64,13 @@
             = f.text_area :cto_description, rows: 5
         .control-group
           .controls
-            = link_to t('links.upload'), '#'
+            = f.file_field :cto_photo_data
         .control-group
           .controls
-            %img{data: {src: 'holder.js/120x120'}}
+            - if @company.cto_photo.try(:url)
+              = image_tag @company.cto_photo.url
+            - else
+              %img{data: {src: 'holder.js/190x190'}}
         .control-group
           .controls
             = link_to t('links.email'), '#'
@@ -82,10 +88,13 @@
             = f.text_area :sales_description, rows: 5
         .control-group
           .controls
-            = link_to t('links.upload'), '#'
+            = f.file_field :sales_photo_data
         .control-group
           .controls
-            %img{data: {src: 'holder.js/120x120'}}
+            - if @company.sales_photo.try(:url)
+              = image_tag @company.sales_photo.url
+            - else
+              %img{data: {src: 'holder.js/190x190'}}
         .control-group
           .controls
             = link_to t('links.email'), '#'
@@ -103,10 +112,13 @@
             = f.text_area :fourth_description, rows: 5
         .control-group
           .controls
-            = link_to t('links.upload'), '#'
+            = f.file_field :fourth_photo_data
         .control-group
           .controls
-            %img{data: {src: 'holder.js/120x120'}}
+            - if @company.fourth_photo.try(:url)
+              = image_tag @company.fourth_photo.url
+            - else
+              %img{data: {src: 'holder.js/190x190'}}
         .control-group
           .controls
             = link_to t('links.email'), '#'

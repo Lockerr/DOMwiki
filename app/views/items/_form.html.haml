@@ -1,6 +1,15 @@
 = form_for @item do |f|
   .form.form-horizontal
     .control-group
+      .controls
+        - if @item.photo.try(:url)
+          = image_tag @item.photo.url, size: '200x200'
+        - else
+          %img{data: {src: 'holder.js/190x190'}}
+      .controls
+        = f.file_field :photo_data
+
+    .control-group
       = f.label :brand_id, class: 'control-label'
       .controls
         = f.text_field :brand_name, data: {provide: :typeahead, source: Brand.all.map(&:name)}, autocomplete: :off

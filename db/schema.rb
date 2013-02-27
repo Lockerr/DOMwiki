@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130226115924) do
+ActiveRecord::Schema.define(:version => 20130227052536) do
 
   create_table "assessments", :force => true do |t|
     t.integer  "category_id"
@@ -225,6 +225,18 @@ ActiveRecord::Schema.define(:version => 20130226115924) do
     t.text     "body"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "photos", :force => true do |t|
+    t.integer  "attachable_id"
+    t.string   "attachable_type"
+    t.string   "data_file_name"
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.datetime "data_updated_at"
+    t.string   "photo_type"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "reviews", :force => true do |t|
