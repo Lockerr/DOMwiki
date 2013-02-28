@@ -42,12 +42,20 @@
           .row
             .span3#brand_selector
               = text_field_tag 'category[feed_data][brands][]', @category.matrix_brands[i].try(:name), {placeholder: 'Choose brand', data: {provide: :typeahead, source: Brand.all.map(&:name), model: :category}, autocomplete: :off}
-            .span3#first_item_brand_selector
-              = text_field_tag "category[feed_data][items][#{i}][]", Item.find_by_id(@category.matrix.items[i.to_s] ? @category.matrix.items[i.to_s][0] : '').try(:name), {placeholder: 'Choose item in scope of brand', data: {provide: :typeahead, source: items, model: :category}, autocomplete: :off}
-            .span3#second_item_brand_selector
-              = text_field_tag "category[feed_data][items][#{i}][]",  Item.find_by_id(@category.matrix.items[i.to_s] ? @category.matrix.items[i.to_s][1] : '').try(:name), {placeholder: 'Choose item in scope of brand', data: {provide: :typeahead, source: items, model: :category}, autocomplete: :off}
-            .span3#third_item_brand_selector
-              = text_field_tag "category[feed_data][items][#{i}][]",  Item.find_by_id(@category.matrix.items[i.to_s] ? @category.matrix.items[i.to_s][0] : '').try(:name), {placeholder: 'i will blast all the humans', data: {provide: :typeahead, source: items, model: :category}, autocomplete: :off}
+            - if @category.matrix.items
+              .span3#first_item_brand_selector
+                = text_field_tag "category[feed_data][items][#{i}][]", Item.find_by_id(@category.matrix.items[i.to_s] ? @category.matrix.items[i.to_s][0] : '').try(:name), {placeholder: 'Choose item in scope of brand', data: {provide: :typeahead, source: items, model: :category}, autocomplete: :off}
+              .span3#second_item_brand_selector
+                = text_field_tag "category[feed_data][items][#{i}][]",  Item.find_by_id(@category.matrix.items[i.to_s] ? @category.matrix.items[i.to_s][1] : '').try(:name), {placeholder: 'Choose item in scope of brand', data: {provide: :typeahead, source: items, model: :category}, autocomplete: :off}
+              .span3#third_item_brand_selector
+                = text_field_tag "category[feed_data][items][#{i}][]",  Item.find_by_id(@category.matrix.items[i.to_s] ? @category.matrix.items[i.to_s][0] : '').try(:name), {placeholder: 'i will blast all the humans', data: {provide: :typeahead, source: items, model: :category}, autocomplete: :off}
+            - else
+              .span3#first_item_brand_selector
+                = text_field_tag "category[feed_data][items][#{i}][]",nil , {placeholder: 'Choose item in scope of brand', data: {provide: :typeahead, source: items, model: :category}, autocomplete: :off}
+              .span3#second_item_brand_selector
+                = text_field_tag "category[feed_data][items][#{i}][]",nil , {placeholder: 'Choose item in scope of brand', data: {provide: :typeahead, source: items, model: :category}, autocomplete: :off}
+              .span3#third_item_brand_selector
+                = text_field_tag "category[feed_data][items][#{i}][]",nil , {placeholder: 'i will blast all the humans', data: {provide: :typeahead, source: items, model: :category}, autocomplete: :off}
 
 
     %hr

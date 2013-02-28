@@ -60,37 +60,38 @@
                           
                           = "Price: #{item.price_from} - #{item.price_to}"
 
-            - brands = @category.matrix.brands
-            - brands.each do |brand_id|
-              .media
-                - if brand = Brand.find(brand_id)
-                  - if src = brand.photo.try(:url)
-                    %img.pull-left.media-object{src: src, style: 'width: 120px'}
-                  - else
-                    %img.pull-left.media-object{data: {src: 'holder.js/120x120'}}
+            - if brands = @category.matrix.brands
 
-                  .media-body
-                    %h5.media-heading
-                      = brand.name
-                    %p{style: 'text-align: justify;'}
-                      = brand.description
-                      - for item_id in @category.matrix.items[brands.index(brand_id).to_s]
-                        - if item = Item.find_by_id(item_id)
-                          .media
-                            - if src = item.photo.try(:url)
-                              %img.pull-left.media-object{src: src, style: 'width: 90px'}
-                            - else
-                              %img.pull-left.media-object{data: {src: 'holder.js/90x90'}}
-                            .media-body
-                              %h5.media-heading
-                                = item.name
-                              %p
-                                = item.description
-                              %p
-                                Price:
-                                = item.price_from
-                                \-
-                                = item.price_to
+              - brands.each do |brand_id|
+                .media
+                  - if brand = Brand.find(brand_id)
+                    - if src = brand.photo.try(:url)
+                      %img.pull-left.media-object{src: src, style: 'width: 120px'}
+                    - else
+                      %img.pull-left.media-object{data: {src: 'holder.js/120x120'}}
+
+                    .media-body
+                      %h5.media-heading
+                        = brand.name
+                      %p{style: 'text-align: justify;'}
+                        = brand.description
+                        - for item_id in @category.matrix.items[brands.index(brand_id).to_s]
+                          - if item = Item.find_by_id(item_id)
+                            .media
+                              - if src = item.photo.try(:url)
+                                %img.pull-left.media-object{src: src, style: 'width: 90px'}
+                              - else
+                                %img.pull-left.media-object{data: {src: 'holder.js/90x90'}}
+                              .media-body
+                                %h5.media-heading
+                                  = item.name
+                                %p
+                                  = item.description
+                                %p
+                                  Price:
+                                  = item.price_from
+                                  \-
+                                  = item.price_to
       %hr/
       .row-fluid
         
