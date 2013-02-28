@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227052536) do
+ActiveRecord::Schema.define(:version => 20130227115825) do
 
   create_table "assessments", :force => true do |t|
     t.integer  "category_id"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20130227052536) do
   create_table "brands_categories", :force => true do |t|
     t.integer "brand_id"
     t.integer "category_id"
+    t.boolean "feed"
   end
 
   add_index "brands_categories", ["brand_id", "category_id"], :name => "index_brands_categories_on_brand_id_and_category_id"
@@ -75,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20130227052536) do
     t.integer  "contactor_id"
     t.text     "description"
     t.boolean  "published"
+    t.string   "matrix"
   end
 
   create_table "categories_companies", :id => false, :force => true do |t|
@@ -85,6 +87,7 @@ ActiveRecord::Schema.define(:version => 20130227052536) do
   create_table "categories_items", :id => false, :force => true do |t|
     t.integer "category_id"
     t.integer "item_id"
+    t.boolean "feed"
   end
 
   create_table "categories_offers", :id => false, :force => true do |t|

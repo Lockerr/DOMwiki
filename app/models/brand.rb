@@ -4,6 +4,8 @@ class Brand < ActiveRecord::Base
   has_one :photo, as: :attachable
   belongs_to :country
 
+  has_many :brand_categories
+
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :offers, uniq: true
   has_and_belongs_to_many :companies

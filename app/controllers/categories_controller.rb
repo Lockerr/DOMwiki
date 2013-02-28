@@ -61,7 +61,7 @@ class CategoriesController < ApplicationController
       end
 
 
-      render 'edit_subcategory'
+      render 'edit_subcategory', locals: {items: Item.all.map{|item| "[#{item.brand.name}] #{item.name}"}}
     else
       render 'edit'
     end
@@ -93,7 +93,7 @@ class CategoriesController < ApplicationController
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { redirect_to edit_category_path(@category), alert: @category.errors}
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
     end

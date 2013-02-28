@@ -46,6 +46,7 @@ gem 'paperclip'
 gem 'rb-inotify', '~> 0.8.8'
 
 group :development, :test do
+  gem 'binding_of_caller'
   gem 'spork-rails'
   gem 'rspec-rails'
   gem 'guard-rspec'

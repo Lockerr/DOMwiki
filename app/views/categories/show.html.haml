@@ -60,142 +60,37 @@
                           
                           = "Price: #{item.price_from} - #{item.price_to}"
 
+            - brands = @category.matrix.brands
+            - brands.each do |brand_id|
+              .media
+                - if brand = Brand.find(brand_id)
+                  - if src = brand.photo.try(:url)
+                    %img.pull-left.media-object{src: src, style: 'width: 120px'}
+                  - else
+                    %img.pull-left.media-object{data: {src: 'holder.js/120x120'}}
 
-            .media
-              %img.pull-left.media-object{data: {src: 'holder.js/120x120'}}
-              .media-body
-                %h5.media-heading
-                  Брэнд
-                %p{style: 'text-align: justify;'}
-                  = t('lorem')[0..rand(50)+250]
-                .row-fluid
-                  .span4
-                    %h6
-                      Model                    
-                    %p
-                      = t('lorem')[0..rand(50)+150]
-                      %br/
-                      Price: 30000$ - 40000$
-                  .span4
-                    %h6
-                      Model                    
-                    %p
-                      = t('lorem')[0..rand(50)+150]
-                      %br/
-                      Price: 30000$ - 40000$
-                  .span4
-                    %h6
-                      Model                    
-                    %p
-                      = t('lorem')[0..rand(50)+150]
-                      %br/
-                      Price: 30000$ - 40000$
-            .media
-              %img.pull-left.media-object{data: {src: 'holder.js/120x120'}}
-              .media-body
-                %h5.media-heading
-                  Brand
-                %p{style: 'text-align: justify;'}
-                  = t('lorem')[0..rand(50)+250]
-                  .media
-                    
-                    .media-body
-                      %h5.media-heading
-                        Model
-                      %p
-                        = t('lorem')[0..rand(50)+150]    
-                      %p
-                        Price: 30000$ - 40000$
-                  .media
-                    %img.pull-left.media-object{data: {src: 'holder.js/90x90'}}
-                    .media-body
-                      %h5.media-heading
-                        Model
-                      %p
-                        = t('lorem')[0..rand(50)+150]    
-                      %p
-                        Price: 30000$ - 40000$
-                  .media
-                    %a.pull-left.media-object{:href => '#'}
-                      %img{data: {src: 'holder.js/90x90'}}
-                    .media-body
-                      %a{href: '#'}
-                        %h5.media-heading
-                          Model
-                      %p
-                        = t('lorem')[0..rand(50)+150]    
-                      %p
-                        Price: 30000$ - 40000$
-
-          .row-fluid
-            .media
-              %img.pull-left.media-object{data: {src: 'holder.js/120x120'}}
-              .media-body
-                %h5.media-heading
-                  Брэнд
-                %p{style: 'text-align: justify;'}
-                  = t('lorem')[0..rand(50)+250]
-                .row-fluid
-                  .span4
-                    %h6
-                      Model                    
-                    %p
-                      = t('lorem')[0..rand(50)+150]
-                      %br/
-                      Price: 30000$ - 40000$
-                  .span4
-                    %h6
-                      Model                    
-                    %p
-                      = t('lorem')[0..rand(50)+150]
-                      %br/
-                      Price: 30000$ - 40000$
-                  .span4
-                    %h6
-                      Model                    
-                    %p
-                      = t('lorem')[0..rand(50)+150]
-                      %br/
-                      Price: 30000$ - 40000$
-            .media
-              %img.pull-left.media-object{data: {src: 'holder.js/120x120'}}
-              .media-body
-                %h5.media-heading
-                  Brand
-                %p{style: 'text-align: justify;'}
-                  = t('lorem')[0..rand(50)+250]
-                  .media
-                    
-                    .media-body
-                      %h5.media-heading
-                        Model
-                      %p
-                        = t('lorem')[0..rand(50)+150]    
-                      %p
-                        Price: 30000$ - 40000$
-                  .media
-                    %img.pull-left.media-object{data: {src: 'holder.js/90x90'}}
-                    .media-body
-                      %h5.media-heading
-                        Model
-                      %p
-                        = t('lorem')[0..rand(50)+150]    
-                      %p
-                        Price: 30000$ - 40000$
-                  .media
-                    %a.pull-left.media-object{:href => '#'}
-                      %img{data: {src: 'holder.js/90x90'}}
-                    .media-body
-                      %a{href: '#'}
-                        %h5.media-heading
-                          Model
-                      %p
-                        = t('lorem')[0..rand(50)+150]    
-                      %p
-                        Price: 30000$ - 40000$
-
-                  
-              
+                  .media-body
+                    %h5.media-heading
+                      = brand.name
+                    %p{style: 'text-align: justify;'}
+                      = brand.description
+                      - for item_id in @category.matrix.items[brands.index(brand_id).to_s]
+                        - if item = Item.find_by_id(item_id)
+                          .media
+                            - if src = item.photo.try(:url)
+                              %img.pull-left.media-object{src: src, style: 'width: 90px'}
+                            - else
+                              %img.pull-left.media-object{data: {src: 'holder.js/90x90'}}
+                            .media-body
+                              %h5.media-heading
+                                = item.name
+                              %p
+                                = item.description
+                              %p
+                                Price:
+                                = item.price_from
+                                \-
+                                = item.price_to
       %hr/
       .row-fluid
         
