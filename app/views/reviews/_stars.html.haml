@@ -2,7 +2,7 @@
   - review.send(parameter).to_i.times do |i|
     = link_to glyph(:star), '', data: {value: i, parameter: parameter}, class: "review-star"
   - (5 - review.send(parameter).to_i).times do |i|
-    = link_to glyph(:star_empty), '', data: {value: i + review.send(parameter), parameter: parameter}, class: "review-star"
+    = link_to glyph(:star_empty), '', data: {value: i + review.send(parameter).to_i, parameter: parameter}, class: "review-star"
   = hidden_field_tag "review[#{parameter}]", review.send(parameter)
 - else
   - 5.times do |i|
