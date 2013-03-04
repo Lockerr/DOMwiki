@@ -62,10 +62,11 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = Review.new(params[:review])
+    @review = Review.new(params[:review].except('photo_data'))
 
     respond_to do |format|
       if @review.save
+        @review.photo_data = params[:review][:photo_data]
         format.html { redirect_to @review, notice: 'Review was successfully created.' }
         format.json { render json: @review, status: :created, location: @review }
       else
