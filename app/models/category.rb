@@ -68,21 +68,22 @@ class Category < ActiveRecord::Base
   def feed_data=(hash)
     self.matrix ||= OpenStruct.new
     self.matrix.brands = nil
+    self.matrix.items = nil
     hash[:brands].delete ''
     brands = hash[:brands]
     self.matrix.brands = Brand.where(name: brands).map(&:id) unless brands.empty?
     return nil if self.matrix.brands.empty?
     self.matrix.brands.length.times do |i|
       hash[:items][i.to_s].each do |item|
-          if i <= self.matrix.brands.size
+        if i <= self.matrix.brands.size
            self.matrix.items ||= {}
            self.matrix.items[i.to_s] ||= []
-           if item = Item.where(name: item.gsub(/\[.+\]\s+/,'')).first
-             self.matrix.items[i.to_s].push item.id
+           if id = Item.where(name: item.gsub(/\[.+\]\s+/,'')).first
+             self.matrix.items[i.to_s].push id.id
            else
              self.matrix.items[i.to_s].push nil
            end
-          end
+        end
       end
     end
     #raise
